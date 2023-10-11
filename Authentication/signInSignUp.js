@@ -1,6 +1,8 @@
 const loginSignupLink = document.querySelectorAll(".form-box .bottom-link a");
 const formPopup = document.querySelector(".form-popup");
 
+
+
 loginSignupLink.forEach(link => {
     link.addEventListener("click",(e)=>{
         e.preventDefault();
@@ -26,3 +28,32 @@ function moveInput(event,ownId,nextInputId){
         }
     }
 }
+
+const postData = (email,password) => {
+    alert("Dhukse");
+    fetch('http://localhost:5000/api/operator/login', {
+        method: 'POST',
+        body: JSON.stringify({
+            email : email,
+            password : password
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+        .then(response => {
+            // if (!response.ok) {
+            //     throw new Error("ERROR: ${response.status}");
+            // }
+            // return response.json();
+            if(response.status == 200){
+                alert("Succesfully Logged in");
+            }else{
+                alert("Login Failed");
+            }
+        })
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+}
+
+postData("ambia@sust.edu","123456");
