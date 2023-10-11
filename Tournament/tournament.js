@@ -3,7 +3,7 @@ const addTournamentButton = document.getElementById("addTournament");
 const logOutButton = document.getElementById("logOut");
 
 const editOptions = document.getElementById("editOptions");
-const editOption = document.querySelectorAll(".editOption");
+
 
 const eventForm = document.getElementById("eventForm");
 
@@ -26,6 +26,8 @@ const upcomingTournamentImage = "../Images/FootballUpcoming.png";
 const runningTournamentImage = "../Images/FootballRunning.png";
 
 const onPageLoading = () => {
+    // getAllTournaments();
+    const editOption = document.querySelectorAll(".editOption");
     const value = localStorage.getItem("admin");
     if(value == "false"){
         addTournamentButton.style.display = "none";
@@ -95,7 +97,7 @@ function addTournament(){
     const date1 = tournamentStartTime.value;
     const date2 = tournamentEndTime.value;
     const tournamentName = newTournamentName.value;
-
+    closeForm();
     if(date1=="" || date2=="" || tournamentName==""){
         alert("Please fill all the required data");
     }
@@ -110,13 +112,14 @@ function addTournament(){
     }else{
         postTournamentData(tournamentName,date1,date2);
     }
+    
 }
 
-onPageLoading();
+
 
 
 const postTournamentData = (tournamentName,startingDate,endingDate) => {
-    fetch('http://localhost:5000/api/tournament', {
+    fetch('http://localhost:5050/api/tournament', {
         method: 'POST',
         body: JSON.stringify({
             tournamentId : tournamentName + startingDate,
@@ -129,20 +132,89 @@ const postTournamentData = (tournamentName,startingDate,endingDate) => {
         }
     })
         .then(response => {
-            // if (!response.ok) {
-            //     throw new Error("ERROR: ${response.status}");
-            // }
-            // return response.json();
-            if(response.status == 200){
-                alert("Succesfully Event Created");
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
             }
+            return response.json();
+            // if(response.status == 200){
+            //     alert("Succesfully Event Created");
+            // }
         })
-        .then(data => console.log(data))
+        .then(data => {
+            closeForm();
+            showAtList(data);
+        })
         .catch(error => console.log(error));
 }
 
+function showAtList(data){
+    let newRow = document.createElement("tr");
+
+    var cell1 = document.createElement("td");
+    cell1.textContent = tableContainer.rows.length;
+    newRow.append(cell1);
+
+    var currentDate = new Date();
+    var startingDate = new Date(data.startingDate);
+    var endingDate = new Date(data.endingDate);
+    // console.log(currentDate);
+    var cell2 = document.createElement("td");
+    var image = document.createElement("img");
+    var p = document.createElement("p");
+    p.className = "status";
+    if(currentDate>endingDate){
+        image.src = finishedTournamentImage;
+        p.classList.add("finished");
+        p.innerHTML = `Finished`;
+    }else if(currentDate<startingDate){
+        image.src = upcomingTournamentImage;
+        p.classList.add("upcoming");
+        p.innerHTML = `Upcoming`;
+    }else if(currentDate>=startingDate && currentDate<=endingDate){
+        image.src = runningTournamentImage;
+        p.classList.add("running");
+        p.innerHTML = `Running`;
+    }
+
+    cell2.append(image);
+    newRow.append(cell2);
+
+    var cell3 = document.createElement("td");
+    cell3.textContent = data.tournamentName;
+    newRow.append(cell3);
+
+    var cell4 = document.createElement("td");
+    cell4.textContent = data.startingDate;
+    newRow.append(cell4);
+
+    var cell5 = document.createElement("td");
+    cell5.append(p);
+    newRow.append(cell5);
+
+    var cell6 = document.createElement("td");
+                //cell6.className = "editOption";
+    var i1 = document.createElement("i");
+    i1.className = "fa-regular fa-pen-to-square editAction";
+                // i1.classList.add("fa-pen-to-square","editAction");
+    var i2 = document.createElement("i");
+    i2.className = "fa-solid fa-trash-can deleteAction";
+    cell6.appendChild(i1);
+    cell6.appendChild(i2);
+                //newRow.append(cell6);
+    if(localStorage.getItem("admin") === "true"){
+        newRow.append(cell6);
+    }
+                // i2.className = "fa-solid";
+                // i.classList.add("fa-trash-can","deleteAction");
+                // cell6.appendChild(i2);
+                
+
+    tableBody.append(newRow);
+
+}
+
 const getAllTournaments = () => {
-    fetch('http://localhost:5000/api/tournaments')
+    fetch('http://localhost:5050/api/tournaments')
         .then(response => {
             if (!response.ok) {
                 throw new Error("ERROR: ${response.status}");
@@ -150,9 +222,9 @@ const getAllTournaments = () => {
             return response.json();
         })
         .then(dataArray => {
-            console.log(dataArray);
+            // console.log(dataArray);
             dataArray.forEach(function(item,index){
-                console.log(item);
+                // console.log(item);
                 let newRow = document.createElement("tr");
 
                 var cell1 = document.createElement("td");
@@ -162,7 +234,7 @@ const getAllTournaments = () => {
                 var currentDate = new Date();
                 var startingDate = new Date(item.startingDate);
                 var endingDate = new Date(item.endingDate);
-                console.log(currentDate);
+                // console.log(currentDate);
                 var cell2 = document.createElement("td");
                 var image = document.createElement("img");
                 var p = document.createElement("p");
@@ -196,6 +268,24 @@ const getAllTournaments = () => {
                 cell5.append(p);
                 newRow.append(cell5);
 
+                var cell6 = document.createElement("td");
+                //cell6.className = "editOption";
+                var i1 = document.createElement("i");
+                i1.className = "fa-regular fa-pen-to-square editAction";
+                // i1.classList.add("fa-pen-to-square","editAction");
+                var i2 = document.createElement("i");
+                i2.className = "fa-solid fa-trash-can deleteAction";
+                cell6.appendChild(i1);
+                cell6.appendChild(i2);
+                //newRow.append(cell6);
+                if(localStorage.getItem("admin") === "true"){
+                    newRow.append(cell6);
+                }
+                // i2.className = "fa-solid";
+                // i.classList.add("fa-trash-can","deleteAction");
+                // cell6.appendChild(i2);
+                
+
                 tableBody.append(newRow);
             });
         })
@@ -203,3 +293,4 @@ const getAllTournaments = () => {
 }
 
 getAllTournaments();
+onPageLoading();

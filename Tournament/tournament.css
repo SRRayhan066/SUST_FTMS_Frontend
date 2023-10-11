@@ -166,13 +166,13 @@
 }
 
 .login .form-details{
-    background: url("Images/LoginPageImage.jpg");
+    background: url("../Images/Football.png");
     background-size: cover;
     background-position: center;
 }
 
 .signup .form-details{
-    background: url("Images/LoginPageImage.jpg");
+    background: url("../Images/Football.png");
     background-size: cover;
     background-position: center;
 }
@@ -362,7 +362,8 @@ tbody tr:hover{
 }
 
 .editOptions{
-    display: block;
+    position: sticky;
+    /* display: sti; */
 }
 
 .editAction{

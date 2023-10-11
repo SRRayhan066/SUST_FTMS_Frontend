@@ -1,7 +1,9 @@
+
 const loginSignupLink = document.querySelectorAll(".form-box .bottom-link a");
 const formPopup = document.querySelector(".form-popup");
 
-
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
 loginSignupLink.forEach(link => {
     link.addEventListener("click",(e)=>{
@@ -11,8 +13,9 @@ loginSignupLink.forEach(link => {
 });
 
 function toTournament(){
-    localStorage.setItem("admin","true");
+    
     window.location.href = "../Tournament/tournament.html";
+    localStorage.setItem("admin","true");
 }
 
 function moveInput(event,ownId,nextInputId){
@@ -29,9 +32,17 @@ function moveInput(event,ownId,nextInputId){
     }
 }
 
+function adminLogin(){
+    postData(email.value , password.value);
+    // if(email.value == "admin" && password.value == "admin"){
+        
+    //     window.location.href = "../Tournament/tournament.html";
+    //     alert("Login Successfull");
+    // }
+}
+
 const postData = (email,password) => {
-    alert("Dhukse");
-    fetch('http://localhost:5000/api/operator/login', {
+    fetch('http://localhost:5050/api/operator/login', {
         method: 'POST',
         body: JSON.stringify({
             email : email,
@@ -47,7 +58,8 @@ const postData = (email,password) => {
             // }
             // return response.json();
             if(response.status == 200){
-                alert("Succesfully Logged in");
+                toTournament();
+                alert("Login Successfull");
             }else{
                 alert("Login Failed");
             }
@@ -56,4 +68,3 @@ const postData = (email,password) => {
         .catch(error => console.log(error));
 }
 
-postData("ambia@sust.edu","123456");
