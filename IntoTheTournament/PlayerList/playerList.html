@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player List</title>
+    <link rel="stylesheet" href="playerList.css">
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <script src="playerList.js" defer></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="allElements">
+        <div class="box">
+            <input type="text" placeholder="Player Name">
+            <a href="#">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="teamList" onclick="toTeamList()">
+            <p><b>Team List</b></p>
+            <a href="#">
+                <i class="fa-solid fa-people-group"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="fixture" onclick="toFixture()">
+            <p><b>Fixture</b></p>
+            <a href="#">
+                <i class="fa-solid fa-timeline fa-rotate-270"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="refree" onclick="toRefree()">
+            <p><b>Refrees</b></p>
+            <a href="#">
+                <i class="fa-solid fa-flag-checkered"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="addTeam" onclick="openForm()">
+            <p><b>Add Player</b></p>
+            <a href="#">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="logOut">
+            <p><b>Logout</b></p>
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="form-popup relation" id="playerForm">
+        <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+        <div class="form-box login">
+            <div class="form-details">
+                <img src="/Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2 id="formHeading">New Player</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input id="playerRegistration" type="number" onkeydown="moveInput(event, 'playerRegistration', 'null', 'playerName')" required>
+                        <label>Player Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="playerName" type="text" onkeydown="moveInput(event, 'playerName', 'playerRegistration', 'playerSession')" required>
+                        <label>Player Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="playerSession" type="text" onkeydown="moveInput(event, 'playerSession', 'playerName', 'null')" required>
+                        <label>Player Session</label>
+                    </div>
+                    
+                    <button type="submit">Add Player</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tournamentList relation">
+        <main class="table">
+            <section class="table_header">
+                <h1 id="departmentNameHeading"></h1>
+            </section>
+            <section class="table_body">
+                <table id="tableContainer">
+                    <thead>
+                        <tr>
+                            <th> Serial No. </th>
+                            <th> Registration No. </th>
+                            <th> Player Name </th>
+                            <th> Session </th>
+                            <th> Semister </th>
+                            <th class="editOptions" id="editOptions"> Delete </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td> 2019831052 </td>
+                            <td> Avik Chutya </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td> 2019831065 </td>
+                            <td> Fahad Thapan </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 3 </td>
+                            <td> 2019831066 </td>
+                            <td> Md Shafikul Rahman </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

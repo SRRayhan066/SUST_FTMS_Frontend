@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team List</title>
+    <link rel="stylesheet" href="teamList.css" class="style">
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <script src="teamList.js" defer></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="allElements">
+        <div class="box">
+            <input type="text" placeholder="Tournament Name">
+            <a href="#">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="teamList" >
+            <p><b>Team List</b></p>
+            <a href="#">
+                <i class="fa-solid fa-people-group"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="fixture" onclick="toFixture()">
+            <p><b>Fixture</b></p>
+            <a href="#">
+                <i class="fa-solid fa-timeline fa-rotate-270"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="refree" onclick="toRefree()">
+            <p><b>Refrees</b></p>
+            <a href="#">
+                <i class="fa-solid fa-flag-checkered"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="addTeam" onclick="openForm()">
+            <p><b>Add Team</b></p>
+            <a href="#">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="logOut">
+            <p><b>Logout</b></p>
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </div>
+
+    
+
+    <div class="form-popup relation" id="eventForm">
+        <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+        <div class="form-box login" id="teamSubmissionPage">
+            <div class="form-details">
+                <img src="/Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2>New Team</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <select name="departmentName" id="departmentsList" onkeydown="moveInput(event, 'departmentsList', 'null', 'submissionTime')">
+                            <option value="none">Select Department</option>
+                            <option value="none">Computer Science and Engineering</option>
+                            <option value="none">Software Engineering</option>
+                            <option value="none">Electrical and Electronic Engineering</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <input id="submissionTime" type="text" onfocus="this.type='date'" onblur="this.type='text'" onkeydown="moveInput(event, 'submissionTime', 'departmentsList', 'teamManager')" required>
+                        <label>Submission Date</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="teamManager" type="text" onkeydown="moveInput(event, 'teamManager', 'submissionTime', 'teamCaptain')" required>
+                        <label id="teamManagerLabel">Team Manager</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="teamCaptain" type="number" onkeydown="moveInput(event, 'teamCaptain', 'teamManager', 'null')" required>
+                        <label id="teamCaptainLabel">Team Captain Registration No.</label>
+                    </div>
+
+                    <button type="submit" id="nextButton" onclick="toNext()">Next</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-popup relation playerForm" id="eventForm2">
+        <i class="fa-solid fa-arrow-left" onclick="toPrevious()"></i>
+        <i class="fa-regular fa-circle-xmark" onclick="closeForm2()"></i>
+        <h2>Player's Registration No.</h2>
+        <div class="form-box login playerRegistrationForm" id="teamSubmissionPage">
+            <div class="form-content">
+                <form action="#">
+                    <div class="input-field">
+                        <input type="number" id="player1" onkeydown="moveInput(event, 'player1', 'null', 'player2')" required>
+                        <label>Player1 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player4" onkeydown="moveInput(event, 'player4', 'player3', 'player5')" required>
+                        <label>Player4 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player7" onkeydown="moveInput(event, 'player7', 'player6', 'player8')" required>
+                        <label>Player7 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player10" onkeydown="moveInput(event, 'player10', 'player9', 'player11')" required>
+                        <label>Player10 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player13" onkeydown="moveInput(event, 'player13', 'player12', 'player14')" required>
+                        <label>Player13 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player16" onkeydown="moveInput(event, 'player16', 'player15', 'player17')" required>
+                        <label>Player16 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player19" onkeydown="moveInput(event, 'player19', 'player18', 'player20')" required>
+                        <label>Player19 Registration No.</label>
+                    </div>
+                </form>
+            </div>
+            <div class="form-content">
+                <form action="#">
+                    <div class="input-field">
+                        <input type="number" id="player2" onkeydown="moveInput(event, 'player2', 'player1', 'player3')" required>
+                        <label>Player2 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player5" onkeydown="moveInput(event, 'player5', 'player4', 'player6')" required>
+                        <label>Player5 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player8" onkeydown="moveInput(event, 'player8', 'player7', 'player9')" required>
+                        <label>Player8 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player11" onkeydown="moveInput(event, 'player11', 'player10', 'player12')" required>
+                        <label>Player11 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player14" onkeydown="moveInput(event, 'player14', 'player13', 'player15')" required>
+                        <label>Player14 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player17" onkeydown="moveInput(event, 'player17', 'player16', 'player18')" required>
+                        <label>Player17 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player20" onkeydown="moveInput(event, 'player20', 'player19', 'null')" required>
+                        <label>Player20 Registration No.</label>
+                    </div>
+                    
+                    <button type="submit" id="nextButton">Submit</button>
+                    
+                </form>
+            </div>
+            <div class="form-content">
+                <form action="#">
+                    <div class="input-field">
+                        <input type="number" id="player3" onkeydown="moveInput(event, 'player3', 'player2', 'player4')" required>
+                        <label>Player3 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player6" onkeydown="moveInput(event, 'player6', 'player5', 'player7')" required>
+                        <label>Player6 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player9" onkeydown="moveInput(event, 'player9', 'player8', 'player10')" required>
+                        <label>Player9 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player12" onkeydown="moveInput(event, 'player12', 'player11', 'player13')" required>
+                        <label>Player12 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player15" onkeydown="moveInput(event, 'player15', 'player14', 'player16')" required>
+                        <label>Player15 Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="player18" onkeydown="moveInput(event, 'player18', 'player17', 'player19')" required>
+                        <label>Player18 Registration No.</label>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-popup relation" id="editForm">
+        <i class="fa-regular fa-circle-xmark" onclick="closeEditForm()"></i>
+        <div class="form-box login" id="teamSubmissionPage">
+            <div class="form-details">
+                <img src="/Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2 id="teamName"></h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input id="updateSubmissionTime" type="text" onfocus="this.type='date'" onblur="this.type='text'" onkeydown="moveInput(event, 'updateSubmissionTime', 'null', 'updateTeamManager')" required>
+                        <label>Submission Date</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="updateTeamManager" type="text" onkeydown="moveInput(event, 'updateTeamManager', 'updateSubmissionTime', 'updateTeamCaptain')" required>
+                        <label>Team Manager</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="updateTeamCaptain" type="number" onkeydown="moveInput(event, 'updateTeamCaptain', 'updateTeamManager', 'null')" required>
+                        <label>Team Captain Registration No.</label>
+                    </div>
+                    <button type="submit" id="updateButton">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tournamentList relation">
+        <main class="table">
+            <section class="table_header">
+                <h1 id="tournamentHeading"></h1>
+            </section>
+            <section class="table_body">
+                <table id="tableContainer">
+                    <thead>
+                        <tr>
+                            <th> Serial No. </th>
+                            <th> Department Code </th>
+                            <th> Participated Department </th>
+                            <th> Submission Date </th>
+                            <th> Team Manager </th>
+                            <th class="editOptions" id="editOptions"> Edit </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td> 1001 </td>
+                            <td> Computer Science and Engineering </td>
+                            <td> 10th Jan, 2000 </td>
+                            <td> XYZ </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td> 1002 </td>
+                            <td> Software Engineering </td>
+                            <td> 10th Jan, 2000 </td>
+                            <td> XYZ </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 3 </td>
+                            <td> 1003 </td>
+                            <td> Electrical and Electronic Engineering </td>
+                            <td> 10th Jan, 2000 </td>
+                            <td> XYZ </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

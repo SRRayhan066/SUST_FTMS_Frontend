@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture</title>
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="result.css">
+    <script src="result.js" defer></script>
+</head>
+<body>
+    <body>
+        <div class="background"></div>
+        <div class="allElements">
+            <div class="boxElements" id="teamList" onclick="toTeamList()">
+                <p><b>Team List</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-people-group"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="fixture" onclick="toFixture()">
+                <p><b>Fixture</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="refree" onclick="toRefree()">
+                <p><b>Refrees</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="addTeam" onclick="openForm()">
+                <p><b>Score</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="logOut">
+                <p><b>Logout</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    
+        <div class="form-popup relation" id="scoreForm">
+            <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+            <div class="form-box login" id="teamSubmissionPage">
+                <div class="form-details">
+                    <img src="/Images/Football.png">
+                </div>
+                <div class="form-content" id="form-content">
+                    <h2>SCORE</h2>
+                    <form action="#">
+                        <div class="input-field">
+                            <input id="team1Score" type="number" required>
+                            <label id="team1ScoreLabel">Team 1 Score</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="team2Score" type="number" required>
+                            <label id="team2ScoreLabel">Team 2 Score</label>
+                        </div>
+                        <div class="input-field" id="tieBreakerDiv1">
+                            <input id="team1TieBreaker" type="number" required>
+                            <label id="team1TieBreakerLabel">Team 1 Tie-Breaker</label>
+                        </div>
+                        <div class="input-field" id="tieBreakerDiv2">
+                            <input id="team2TieBreaker" type="number" required>
+                            <label id="team2TieBreakerLabel">Team 2 Tie-Breaker</label>
+                        </div>
+                        <button type="submit" id="submissionButton" onclick="submitData()">SUBMIT</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-popup relation" id="tieBreakerForm">
+            <i class="fa-regular fa-circle-xmark" onclick="closeTieBreakerForm()"></i>
+            <div class="form-box login" id="teamSubmissionPage">
+                <div class="form-details">
+                    <img src="/Images/Football.png">
+                </div>
+                <div class="form-content">
+                    <h2>Tie-Breaker</h2>
+                    <form action="#">
+                        <div class="input-field">
+                            <input id="team1TieBreaker" type="number" required>
+                            <label id="team1TieBreakerLabel">Team 1 Tie-Breaker</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="team2TieBreaker" type="number" required>
+                            <label id="team2TieBreakerLabel">Team 2 Tie-Breaker</label>
+                        </div>
+    
+                        <button type="submit" id="submissionButton2">SUBMIT</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tournamentList relation">
+            <main class="table">
+                <section class="table_header">
+
+                    <i class="fa-solid fa-chevron-right" onclick="toNext()"></i>
+                    <h1 id="matchName">Team Software Engineering</h1>          
+                </section>
+                <section class="table_body">
+                    <table id="tableContainer">
+                        <thead>
+                            <tr>
+                                <th> Score </th>
+                                <th> Score </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td> 7 </td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+            
+        </div>
+
+        
+    </body>
+</body>
+</html>

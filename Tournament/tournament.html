@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament</title>
+    <link rel="stylesheet" href="tournament.css">
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <script src="tournament.js" defer></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="allElements">
+        <div class="box">
+            <input type="text" placeholder="Tournament Name">
+            <a href="#">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+        </div>
+        
+        <div class="boxElements" id="addTournament" onclick="openForm('New Tournament')">
+            <p><b>Add Team</b></p>
+            <a href="#">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="logOut">
+            <p><b>Logout</b></p>
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </div>
+    <div class="form-popup relation" id="eventForm">
+        <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+        <div class="form-box login">
+            <div class="form-details">
+                <img src="/Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2 id="formHeading">New Tournament</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input id="newTournamentName" type="text" onkeydown="moveInput(event,'newTournamentName','null','startTime')" required>
+                        <label>Tournament Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="startTime" type="text" onfocus="this.type='date'" onblur="this.type='text'" onkeydown="moveInput(event,'startTime','newTournamentName','endTime')" required>
+                        <label>Staring Date</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="endTime" type="text" onfocus="this.type='date'" onblur="this.type='text'" onkeydown="moveInput(event,'endTime','startTime','null')" required>
+                        <label>Ending Date</label>
+                    </div>
+                    
+                    <button type="submit" onclick="addTournament()">CREATE</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tournamentList relation">
+        <main class="table">
+            <section class="table_header">
+                <h1>SUST FOOTBALL TOURNAMENTS</h1>
+            </section>
+            <section class="table_body">
+                <table id="tableContainer">
+                    <thead>
+                        <tr>
+                            <th> Serial No. </th>
+                            <th> Event </th>
+                            <th> Event ID </th>
+                            <th> Event Name </th>
+                            <th> Starting Date </th>
+                            <th> Status </th>
+                            <th class="editOptions" id="editOptions"> Edit </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td> <img src="../Images/FootballFinished.png"> </td>
+                            <td> Football-2000 </td>
+                            <td> <b>Intra Sust Football Tournament</b> </td>
+                            <td> 10th Jan, 2000 </td>
+                            <td> <p class="status finished">Finished</p> </td>
+                            <td class="editOption"> <i id="editTournament" class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 1 </td>
+                            <td> <img src="../Images/FootballRunning.png"> </td>
+                            <td> Football-2000 </td>
+                            <td> <b>Intra Sust Football Tournament 2</b> </td>
+                            <td> 10th Jan, 2000 </td>
+                            <td> <p class="status running">Running</p> </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 1 </td>
+                            <td> <img src="../Images/FootballUpcoming.png"> </td>
+                            <td> Football-2000 </td>
+                            <td> <b>Intra Sust Football Tournament 3</b> </td>
+                            <td> 10th Jan, 2000 </td>
+                            <td> <p class="status upcoming">Upcoming</p> </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    
+</body>
+</html>

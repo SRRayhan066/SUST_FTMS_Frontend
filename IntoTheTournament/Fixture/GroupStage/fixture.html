@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture</title>
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fixture.css">
+    <script src="fixture.js" defer></script>
+</head>
+<body>
+    <body>
+        <div class="background"></div>
+        <div class="allElements">
+            <div class="box">
+                <input type="text" placeholder="Tournament Name">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="teamList" onclick="toTeamList()">
+                <p><b>Team List</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-people-group"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="fixture">
+                <p><b>Fixture</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="refree" onclick="toRefree()">
+                <p><b>Refrees</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="logOut">
+                <p><b>Logout</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    
+        <div class="form-popup relation" id="matchForm">
+            <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+            <div class="form-box login" id="teamSubmissionPage">
+                <div class="form-details">
+                    <img src="/Images/Football.png">
+                </div>
+                <div class="form-content">
+                    <h2>New Team</h2>
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="departmentName" id="departmentsList" >
+                                <option value="none">First Team</option>
+                                <option value="none">Computer Science and Engineering</option>
+                                <option value="none">Software Engineering</option>
+                                <option value="none">Electrical and Electronic Engineering</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="departmentName" id="departmentsList2">
+                                <option value="none">Second Team</option>
+                                <option value="none">Computer Science and Engineering</option>
+                                <option value="none">Software Engineering</option>
+                                <option value="none">Electrical and Electronic Engineering</option>
+                            </select>
+                        </div>
+                        <div class="input-field hudai">
+                            <input type="number" onkeydown="moveInput(event, 'player3', 'player2', 'player4')" required>
+                            <label>Player3 Registration No.</label>
+                        </div>
+    
+                        <button type="submit" id="nextButton" onclick="openForm2()">Next</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-popup relation playerForm" id="matchForm2">
+            <i class="fa-solid fa-arrow-left" onclick="toMatchForm1()"></i>
+            <i class="fa-regular fa-circle-xmark" onclick="closeForm2()"></i>
+            <h2>First Team</h2>
+            <div class="form-box login playerRegistrationForm" id="teamSubmissionPage2">
+                <div class="form-content">
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer1">
+                                <option> Player 01 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer4">
+                                <option> Player 04 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer7">
+                                <option> Player 07 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer10">
+                                <option> Player 10 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer13">
+                                <option> Extra Player 02 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-content">
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer2">
+                                <option> Player 02 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer5">
+                                <option> Player 05 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer8">
+                                <option> Player 08 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer11">
+                                <option> Player 11 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer14">
+                                <option> Extra Player 03 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field hudai">
+                            <input type="number" id="hudai" onkeydown="moveInput(event, 'player3', 'player2', 'player4')" required>
+                            <label>Player3 Registration No.</label>
+                        </div>
+                        
+                        
+                        <button type="submit" id="nextButton2" onclick="openForm3()">Submit</button>
+                        
+                    </form>
+                </div>
+                <div class="form-content">
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer3">
+                                <option> Player 03 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer6">
+                                <option> Player 06 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer9">
+                                <option> Player 09 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="firstTeamPlayer12">
+                                <option> Extra Player 01 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <!-- <div class="input-field">
+                            <input type="number" id="player15" onkeydown="moveInput(event, 'player15', 'player14', 'player16')" required>
+                            <label>Player15 Registration No.</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="number" id="player18" onkeydown="moveInput(event, 'player18', 'player17', 'player19')" required>
+                            <label>Player18 Registration No.</label>
+                        </div> -->
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-popup relation playerForm" id="matchForm3">
+            <i class="fa-solid fa-arrow-left" onclick="toMatchForm2()"></i>
+            <i class="fa-regular fa-circle-xmark" onclick="closeForm3()"></i>
+            <h2>Second Team</h2>
+            <div class="form-box login playerRegistrationForm" id="teamSubmissionPage3">
+                <div class="form-content">
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer1">
+                                <option> Player 01 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer4">
+                                <option> Player 04 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer7">
+                                <option> Player 07 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer10">
+                                <option> Player 10 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer13">
+                                <option> Extra Player 02 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-content">
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer2">
+                                <option> Player 02 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer5">
+                                <option> Player 05 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer8">
+                                <option> Player 08 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer11">
+                                <option> Player 11 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer14">
+                                <option> Extra Player 03 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field hudai">
+                            <input type="number" onkeydown="moveInput(event, 'player3', 'player2', 'player4')" required>
+                            <label>Player3 Registration No.</label>
+                        </div>
+                        
+                        
+                        <button type="submit" id="nextButton3">Submit</button>
+                        
+                    </form>
+                </div>
+                <div class="form-content">
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer3">
+                                <option> Player 03 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer6">
+                                <option> Player 06 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer9">
+                                <option> Player 09 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="playerName" id="secondTeamPlayer12">
+                                <option> Extra Player 02 </option>
+                                <option> Fahad Pathan </option>
+                                <option> Rayhan </option>
+                            </select>
+                        </div>
+                        <!-- <div class="input-field">
+                            <input type="number" id="player15" onkeydown="moveInput(event, 'player15', 'player14', 'player16')" required>
+                            <label>Player15 Registration No.</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="number" id="player18" onkeydown="moveInput(event, 'player18', 'player17', 'player19')" required>
+                            <label>Player18 Registration No.</label>
+                        </div> -->
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tournamentList relation">
+            <main class="table">
+                <section class="table_header">
+                    <i class="fa-solid fa-chevron-right" onclick="toNext()"></i>
+                    <h1>Group Stage</h1>
+                    
+                </section>
+                <section class="table_body">
+                    <table id="tableContainer">
+                        <thead>
+                            <tr>
+                                <th> Serial No. </th>
+                                <th> Group A </th>
+                                <th> Group B </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> STAT vs CEP <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td class="groupA"> CSE vs EEE <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> FET vs MAT <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 3 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 4 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> STAT vs CEP <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 5 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 6 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 7 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 8 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+        </div>
+    </body>
+</body>
+</html>

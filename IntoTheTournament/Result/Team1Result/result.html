@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture</title>
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="result.css">
+    <script src="result.js" defer></script>
+</head>
+<body>
+    <body>
+        <div class="background"></div>
+        <div class="allElements">
+            <div class="box">
+                <input type="text" placeholder="Tournament Name">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="teamList" >
+                <p><b>Team List</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-people-group"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="fixture" onclick="toFixture()">
+                <p><b>Fixture</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="refree" onclick="toRefree()">
+                <p><b>Refrees</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="logOut">
+                <p><b>Logout</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    
+        <div class="form-popup relation" id="scoreForm">
+            <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+            <div class="form-box login" id="teamSubmissionPage">
+                <div class="form-details">
+                    <img src="/Images/Football.png">
+                </div>
+                <div class="form-content">
+                    <h2>Player Score</h2>
+                    <form action="#">
+                        <div class="input-field" id="insteadOfDiv">
+                            <select name="departmentName">
+                                <option value="none">Instead Of</option>
+                                <option value="none">Fahad Pathan</option>
+                                <option value="none">Avik Singha</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <input id="goalNo" type="number" required>
+                            <label id="goalNoLabel">Goal No.</label>
+                        </div>
+                        <div class="input-field">
+                            <select name="departmentName">
+                                <option value="none">Punishment</option>
+                                <option value="none">Yellow Card</option>
+                                <option value="none">Red Card</option>
+                            </select>
+                        </div>
+    
+                        <button type="submit" id="submitButton">MODIFY</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tournamentList relation">
+            <main class="table">
+                <section class="table_header">
+                    <i class="fa-solid fa-chevron-left" onclick="toPrevious()"></i>
+                    <i class="fa-solid fa-chevron-right" onclick="toNext()"></i>
+                    <h1 id="team1Name">Team Software Engineering</h1>          
+                </section>
+                <section class="table_body">
+                    <table id="main11TableContainer">
+                        <thead>
+                            <tr>
+                                <th> Serial No. </th>
+                                <th> Gersey No. </th>
+                                <th> Registration No. </th>
+                                <th> Player Name </th>
+                                <th> Goal </th>
+                                <th> Punishment </th>
+                                <th> Edit </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td> 7 </td>
+                                <td> 2019831065 </td>
+                                <td> Fahad Thapan </td>
+                                <td> <img src="../../../Images/footballLogo.png"> </td>
+                                <td> <img src="../../../Images/red.png"> </td>
+                                <td> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> 10 </td>
+                                <td> 2019831066 </td>
+                                <td> Md Shafikul Rahman </td>
+                                <td> <img src="../../../Images/footballLogo.png"> <img src="../../../Images/footballLogo.png"> <img src="../../../Images/footballLogo.png"> </td>
+                                <td> <img src="../../../Images/yellow.png"> </td>
+                                <td> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <table id="extraPlayerTableContainer">
+                        <section class="extraPlayer">
+                            
+                            <h1 id="team1Name">Extra Player</h1>          
+                        </section>
+                        <thead>
+                            <tr>
+                                <th> Serial No. </th>
+                                <th> Gersey No. </th>
+                                <th> Registration No. </th>
+                                <th> Player Name </th>
+                                <th> Instead of </th>
+                                <th> Goal </th>
+                                <th> Punishment </th>
+                                <th> Edit </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td> 7 </td>
+                                <td> 2019831065 </td>
+                                <td> Fahad Thapan </td>
+                                <td> Avik Singha </td>
+                                <td> <img src="../../../Images/footballLogo.png"> </td>
+                                <td> <img src="../../../Images/red.png"> </td>
+                                <td> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> 10 </td>
+                                <td> 2019831066 </td>
+                                <td> Md Shafikul Rahman </td>
+                                <td> Avik Singha </td>
+                                <td> <img src="../../../Images/footballLogo.png"> <img src="../../../Images/footballLogo.png"> <img src="../../../Images/footballLogo.png"> </td>
+                                <td> <img src="../../../Images/yellow.png"> </td>
+                                <td> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+            
+        </div>
+
+        
+    </body>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture</title>
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fixture.css">
+    <script src="fixture.js" defer></script>
+</head>
+<body>
+    <body>
+        <div class="background"></div>
+        <div class="allElements">
+            <div class="box">
+                <input type="text" placeholder="Tournament Name">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="teamList" onclick="toTeamList()">
+                <p><b>Team List</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-people-group"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="fixture" onclick="toFixture()">
+                <p><b>Fixture</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="refree" onclick="toRefree()">
+                <p><b>Refrees</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="logOut">
+                <p><b>Logout</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    
+        <div class="form-popup relation" id="matchForm">
+            <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+            <div class="form-box login" id="teamSubmissionPage">
+                <div class="form-details">
+                    <img src="/Images/Football.png">
+                </div>
+                <div class="form-content">
+                    <h2>Match</h2>
+                    <form action="#">
+                        <div class="input-field">
+                            <select name="departmentName" id="departmentsList1" onkeydown="moveInput(event,'departmentsList1', 'null', 'departmentsList2')">
+                                <option value="none">First Team</option>
+                                <option value="none">CSE</option>
+                                <option value="none">SWE</option>
+                                <option value="none">EEE</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select name="departmentName" id="departmentsList2" onkeydown="moveInput(event,'departmentsList2', 'departmentsList1', 'null')">
+                                <option value="none">Second Team</option>
+                                <option value="none">CSE</option>
+                                <option value="none">SWE</option>
+                                <option value="none">EEE</option>
+                            </select>
+                        </div>
+    
+                        <button type="submit" id="submitButton">SUBMIT</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tournamentList relation">
+            <main class="table">
+                <section class="table_header">
+                    <i class="fa-solid fa-chevron-left" onclick="toPrevious()"></i>
+                    <i class="fa-solid fa-chevron-right" onclick="toNext()"></i>
+                    <h1>Round of 16</h1>
+                    
+                </section>
+                <section class="table_body">
+                    <table id="tableContainer">
+                        <thead>
+                            <tr>
+                                <th> Serial No. </th>
+                                <th> Group A </th>
+                                <th> Group B </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> STAT vs CEP <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td class="groupA"> CSE vs EEE <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> FET vs MAT <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 3 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                            <tr>
+                                <td> 4 </td>
+                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
+                                <td class="groupB"> STAT vs CEP <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+        </div>
+    </body>
+</body>
+</html>

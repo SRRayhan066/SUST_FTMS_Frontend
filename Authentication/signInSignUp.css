@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root{
+    --colorWhite : white;
+    --colorGreen : rgb(26, 56, 26);
+    --borderRadiusColor : #717171;
+    --inputTextColor : #00bcd4;
+    --colorLightGreen : rgb(56, 193, 56);
+    --shadow : rgba(0,0,0,0.2);
+    --backgroundColor : rgb(138, 193, 164);
+    --backgroundColor2 : rgb(66, 173, 116);
+}
+
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans",sans-serif;
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../Images/Football_Match_Picture_3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    z-index: -1;
+    filter: blur(2px);
+}
+
+.background::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.55);
+}
+
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 720px;
+    height: 450px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid var(--colorWhite);
+    transform: translate(-50%,-50%);
+}
+
+.form-popup .form-box{
+    display: flex;
+}
+
+.form-box .form-details{
+    max-width: 330px;
+    width: 100%;
+    color: var(--colorWhite);
+    display: flex;
+    padding: 0 20px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.login .form-details{
+    background: url("Images/LoginPageImage.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.signup .form-details{
+    background: url("Images/LoginPageImage.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.form-box h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-box .form-content{
+    width: 100%;
+    padding: 85px 35px;
+}
+
+form .input-field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+form .input-field input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 0.95rem;
+    border-radius: 3px;
+    border: 1px solid var(--borderRadiusColor);
+}
+
+.input-field input:focus {
+    border-color: var(--colorLightGreen);
+}
+
+.input-field input:is(:focus,:valid){
+    padding: 0px 15px;
+}
+
+form .input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: var(--borderRadiusColor);
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ label{
+    color: var(--colorGreen);
+    font-size: 0rem;
+    transform: translateY(-120%);
+}
+
+.form-box a{
+    color: var(--colorGreen);
+    text-decoration: none;
+}
+
+.form-box a:hover {
+    text-decoration: underline;
+}
+
+
+.form-box .forgot-pass {
+    display: inline-flex;
+    margin-top: 14px;
+    font-size: 0.95rem;
+
+}
+form button {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 0;
+    border-radius: 3px;
+    margin: 25px 0;
+    color: white;
+    cursor: pointer;
+    background: rgb(66, 173, 116);
+}
+
+form button:hover {
+    background: rgb(22, 132, 73);
+}
+
+.form-box .bottom-link {
+    text-align: center;
+}
+
+
+.form-popup .signup,
+.form-popup.show-signup .login{
+    display: none;
+}
+
+.form-popup.show-signup .signup{
+    display: flex;
+}

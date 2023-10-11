@@ -1,0 +1,453 @@
+
+*{
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans",sans-serif;
+}
+
+:root{
+    --colorWhite : white;
+    --colorGreen : rgb(26, 56, 26);
+    --borderRadiusColor : #717171;
+    --inputTextColor : #00bcd4;
+    --colorLightGreen : rgb(56, 193, 56);
+    --shadow : rgba(0,0,0,0.2);
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* background-color: #82c4cd; */
+    background-image: url("../../../Images/Football_Match_Picture_3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.background::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.55);
+}
+
+.allElements{
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 50px;
+}
+.box{
+    height: 40px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-right: 10px;
+}
+
+.box:hover input{
+    width:400px;
+}
+
+.box input{
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+}
+
+.box a .fa-solid{
+    color: rgb(66, 173, 116);
+    font-size: 18px;
+}
+
+.box a .fa-solid:hover{
+    color: rgb(22, 132, 73);
+}
+
+.boxElements{
+    height: 40px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-right: 10px;
+}
+
+.boxElements:hover p{
+    width:90px;
+    font-size: 16px;
+}
+
+.boxElements p{
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+    font-size: 0px;
+    color: rgb(22, 132, 73);
+    text-align: center;
+}
+
+.boxElements a .fa-solid{
+    color: rgb(66, 173, 116);
+    font-size: 18px;
+}
+
+.boxElements a .fa-solid:hover{
+    color: rgb(22, 132, 73);
+}
+
+
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 720px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid var(--colorWhite);
+    transform: translate(-50%,-50%) scale(0.1);
+    z-index: 2;
+    /* transform: translate(0%) scale(0.1); */
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.playerForm{
+    max-width: 800px;
+    height: 625px;
+}
+
+.playerForm h2{
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.open-eventForm{
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.form-popup i{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+}
+
+.form-popup .form-box{
+    display: flex;
+}
+
+.form-box .form-details{
+    max-width: 330px;
+    width: 100%;
+    color: var(--colorWhite);
+    display: flex;
+    padding: 0 20px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.login .form-details{
+    background: url("Images/LoginPageImage.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.signup .form-details{
+    background: url("Images/LoginPageImage.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.form-box h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-box .form-content{
+    width: 100%;
+    padding: 110px 30px;
+}
+
+.playerForm .form-box .form-content{
+    width: 100%;
+    padding: 15px 15px;
+}
+
+.playerForm .fa-solid{
+    left: 10px;
+    top: 10px;
+}
+
+form .input-field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+form .input-field input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 0.95rem;
+    border-radius: 3px;
+    border: 1px solid var(--borderRadiusColor);
+}
+
+.input-field input:focus {
+    border-color: var(--colorLightGreen);
+}
+
+.input-field input:is(:focus,:valid){
+    padding: 0px 15px;
+}
+
+form .input-field select{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 10px;
+    font-size: 1rem;
+    border-radius: 3px;
+    border: 1px solid var(--borderRadiusColor);
+}
+
+.input-field select:focus {
+    border-color: var(--colorLightGreen);
+}
+
+.input-field select:is(:focus,:valid){
+    padding: 0px 10px 0;
+}
+
+.input-field select:is(:focus, :valid) ~ label{
+    color: var(--colorGreen);
+    font-size: 0.75rem;
+    transform: translateY(-120%);
+}
+
+form .input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: var(--borderRadiusColor);
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ label{
+    color: var(--colorGreen);
+    font-size: 0rem;
+    transform: translateY(-120%);
+}
+
+.form-box a{
+    color: var(--colorGreen);
+    text-decoration: none;
+}
+
+.form-box a:hover {
+    text-decoration: underline;
+}
+
+
+.form-box .forgot-pass {
+    display: inline-flex;
+    margin-top: 14px;
+    font-size: 0.95rem;
+
+}
+form button {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 0;
+    border-radius: 3px;
+    margin: 25px 0;
+    color: white;
+    cursor: pointer;
+    background: rgb(66, 173, 116);
+}
+
+form button:hover {
+    background: rgb(22, 132, 73);
+}
+
+.form-box .bottom-link {
+    text-align: center;
+}
+
+
+/* .signup{
+    visibility: hidden;
+} */
+/* .form-popup .signup,
+.form-popup.show-signup .login{
+    display: none;
+}
+
+.form-popup.show-signup .signup{
+    display: flex;
+} */
+
+
+.tournamentList{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    /* z-index: 1; */
+}
+
+main.table{
+    width: 82vw;
+    height: 30vh;
+    background-color: #fff5;
+
+    backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+
+    overflow: hidden;
+}
+
+.table_header{
+    width: 100%;
+    height: 8.5vh;
+    background-color: #fff4;
+    padding: .8rem 1rem;
+    /* text-align: center; */
+}
+
+.table_header h1{
+    margin-top: -15px;
+    text-align: center;
+}
+.table_header .fa-chevron-right{
+    margin-left: 98%;
+    /* font-size: 18px; */
+}
+
+.table_body{
+    width: 95%;
+    max-height: calc(89% - .8rem);
+    background-color: #fffb;
+
+    text-align: center;
+
+    margin: .8rem auto;
+    border-radius: .6rem;
+
+    overflow: auto;
+}
+
+.table_body::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.table_body::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.table_body:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
+
+
+table{
+    width: 100%;
+}
+
+td img {
+    width : 36px;
+    height: 36px;
+    margin-right: .5rem;
+    border-radius: 50%;
+
+
+    vertical-align: middle;
+}
+
+td i{
+    padding: 10px;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    padding: 1rem;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #d5d1defe;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #0000000b;
+}
+
+tbody tr:hover{
+    background-color: #fff6;
+}
+
+.editOptions{
+    display: block;
+}
+
+.status{
+    padding: .4rem 0;
+    border-radius: 2rem;
+}
+
+.status.finished{
+    background-color: #86e49d;
+    color: #006b21;
+}
+
+.status.upcoming{
+    background-color: #ebc474;
+    color: #404308;
+}
+
+.status.running{
+    background-color: #00bcd4;
+    color: #103c42;
+}
