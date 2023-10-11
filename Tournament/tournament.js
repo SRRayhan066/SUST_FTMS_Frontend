@@ -19,6 +19,12 @@ const editTournament = document.getElementById("editTournament");
 
 let formHeading = document.getElementById("formHeading");
 
+const tableBody = document.getElementById("tableBody");
+
+const finishedTournamentImage = "../Images/FootballFinished.png";
+const upcomingTournamentImage = "../Images/FootballUpcoming.png";
+const runningTournamentImage = "../Images/FootballRunning.png";
+
 const onPageLoading = () => {
     const value = localStorage.getItem("admin");
     if(value == "false"){
@@ -29,46 +35,33 @@ const onPageLoading = () => {
             element.style.display = "none";
         });
     }
+    //getAllTournaments();
 }
 
-trElements.forEach(function(tr) {
-    var tdElements = tr.querySelectorAll("td");
 
-    tdElements.forEach(function(td, index) {
-      if (index === targetIndex) {
-        editTournament.addEventListener("click", function() {
-            
-        //   var clickedData = td.textContent;
-        //   localStorage.setItem("matchName",clickedData);
-        //   window.location.href = "../../Result/TotalResult/result.html";
-        });
-      }
-    });
-});
 
 tableContainer.addEventListener("click",function(event){
     const target = event.target;
     if (target.classList.contains("editAction")) {
 
         var row = target.closest("tr");
-        let eventName = row.cells[3].textContent;
+        let eventName = row.cells[2].textContent;
         var formHeadingValue = formHeading.innerHTML;
         openForm(eventName);
         alert("Edit clicked for: " + formHeadingValue);
     }
     else if(target.classList.contains("deleteAction")){
         var row = target.closest("tr");
-        var eventName = row.cells[3].textContent;
+        var eventName = row.cells[2].textContent;
         alert("Delete clicked for: " + eventName);
     }
     else if (target.tagName === "TD") {
         const row = target.parentNode;
 
         const serialNo = row.cells[0].textContent;
-        const eventId = row.cells[2].textContent;
-        const eventName = row.cells[3].textContent;
-        const startingDate = row.cells[4].textContent;
-        const status = row.cells[5].textContent;
+        const eventName = row.cells[2].textContent;
+        const startingDate = row.cells[3].textContent;
+        const status = row.cells[4].textContent;
 
         localStorage.setItem("tournamentName",eventName);
         window.location.href = "../IntoTheTournament/TeamList/teamList.html";
@@ -114,7 +107,99 @@ function addTournament(){
         alert("Date1 can't be bigger than Date2");
     }else if(Date1.getTime() === Date2.getTime()){
         alert("Both date can't be same");
+    }else{
+        postTournamentData(tournamentName,date1,date2);
     }
 }
 
 onPageLoading();
+
+
+const postTournamentData = (tournamentName,startingDate,endingDate) => {
+    fetch('http://localhost:5000/api/tournament', {
+        method: 'POST',
+        body: JSON.stringify({
+            tournamentId : tournamentName + startingDate,
+            tournamentName : tournamentName,
+            startingDate : startingDate,
+            endingDate : endingDate
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+        .then(response => {
+            // if (!response.ok) {
+            //     throw new Error("ERROR: ${response.status}");
+            // }
+            // return response.json();
+            if(response.status == 200){
+                alert("Succesfully Event Created");
+            }
+        })
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+}
+
+const getAllTournaments = () => {
+    fetch('http://localhost:5000/api/tournaments')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(dataArray => {
+            console.log(dataArray);
+            dataArray.forEach(function(item,index){
+                console.log(item);
+                let newRow = document.createElement("tr");
+
+                var cell1 = document.createElement("td");
+                cell1.textContent = index+1;
+                newRow.append(cell1);
+
+                var currentDate = new Date();
+                var startingDate = new Date(item.startingDate);
+                var endingDate = new Date(item.endingDate);
+                console.log(currentDate);
+                var cell2 = document.createElement("td");
+                var image = document.createElement("img");
+                var p = document.createElement("p");
+                p.className = "status";
+                if(currentDate>endingDate){
+                    image.src = finishedTournamentImage;
+                    p.classList.add("finished");
+                    p.innerHTML = `Finished`;
+                }else if(currentDate<startingDate){
+                    image.src = upcomingTournamentImage;
+                    p.classList.add("upcoming");
+                    p.innerHTML = `Upcoming`;
+                }else{
+                    image.src = runningTournamentImage;
+                    p.classList.add("running");
+                    p.innerHTML = `Running`;
+                }
+
+                cell2.append(image);
+                newRow.append(cell2);
+
+                var cell3 = document.createElement("td");
+                cell3.textContent = item.tournamentName;
+                newRow.append(cell3);
+
+                var cell4 = document.createElement("td");
+                cell4.textContent = item.startingDate;
+                newRow.append(cell4);
+
+                var cell5 = document.createElement("td");
+                cell5.append(p);
+                newRow.append(cell5);
+
+                tableBody.append(newRow);
+            });
+        })
+        .catch(error => console.log(error));
+}
+
+getAllTournaments();

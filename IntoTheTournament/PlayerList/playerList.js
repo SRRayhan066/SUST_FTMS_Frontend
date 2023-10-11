@@ -2,9 +2,28 @@ const departmentHeading = document.getElementById("departmentNameHeading");
 const departmentName = localStorage.getItem("departmentName");
 departmentHeading.innerHTML = departmentName;
 
+const editOptions = document.getElementById("editOptions");
+const editOption = document.querySelectorAll(".editOption");
+
+const logOutButton = document.getElementById("logOut");
+
+const addPlayerButton = document.getElementById("addPlayer");
+
 const playerForm = document.getElementById("playerForm");
 
 const tableContainer = document.getElementById("tableContainer");
+
+const onPageLoading = () =>{
+    const value = localStorage.getItem("admin");
+    if(value == "false"){
+        addPlayerButton.style.display = "none";
+        editOptions.style.display = "none";
+        logOutButton.style.display = "none";
+        editOption.forEach(function(element) {
+            element.style.display = "none";
+        });
+    }
+}
 
 function toTeamList(){
     window.location.href = "../TeamList/teamList.html";
@@ -48,3 +67,5 @@ tableContainer.addEventListener("click",function(event){
         alert("Delete clicked for: " + eventName);
     }
 });
+
+onPageLoading();
