@@ -192,23 +192,25 @@ function showAtList(data){
     newRow.append(cell5);
 
     var cell6 = document.createElement("td");
-                //cell6.className = "editOption";
-    var i1 = document.createElement("i");
-    i1.className = "fa-regular fa-pen-to-square editAction";
-                // i1.classList.add("fa-pen-to-square","editAction");
-    var i2 = document.createElement("i");
-    i2.className = "fa-solid fa-trash-can deleteAction";
-    cell6.appendChild(i1);
-    cell6.appendChild(i2);
-                //newRow.append(cell6);
+    //cell6.className = "editOption";
     if(localStorage.getItem("admin") === "true"){
-        newRow.append(cell6);
-    }
-                // i2.className = "fa-solid";
-                // i.classList.add("fa-trash-can","deleteAction");
-                // cell6.appendChild(i2);
+        if(currentDate<startingDate){
+            var i1 = document.createElement("i");
+            i1.className = "fa-regular fa-pen-to-square editAction";
+            // i1.classList.add("fa-pen-to-square","editAction");
+            var i2 = document.createElement("i");
+            i2.className = "fa-solid fa-trash-can deleteAction";
+            cell6.appendChild(i1);
+            cell6.appendChild(i2);
+            }else{
+                var i1 = document.createElement("i");
+                i1.className = "fa-solid fa-lock";
+                cell6.appendChild(i1);
+            }
+            newRow.append(cell6);
+                    
+        }
                 
-
     tableBody.append(newRow);
 
 }
@@ -270,20 +272,23 @@ const getAllTournaments = () => {
 
                 var cell6 = document.createElement("td");
                 //cell6.className = "editOption";
-                var i1 = document.createElement("i");
-                i1.className = "fa-regular fa-pen-to-square editAction";
-                // i1.classList.add("fa-pen-to-square","editAction");
-                var i2 = document.createElement("i");
-                i2.className = "fa-solid fa-trash-can deleteAction";
-                cell6.appendChild(i1);
-                cell6.appendChild(i2);
-                //newRow.append(cell6);
                 if(localStorage.getItem("admin") === "true"){
+                    if(currentDate<startingDate){
+                        var i1 = document.createElement("i");
+                        i1.className = "fa-regular fa-pen-to-square editAction";
+                // i1.classList.add("fa-pen-to-square","editAction");
+                        var i2 = document.createElement("i");
+                        i2.className = "fa-solid fa-trash-can deleteAction";
+                        cell6.appendChild(i1);
+                        cell6.appendChild(i2);
+                    }else{
+                        var i1 = document.createElement("i");
+                        i1.className = "fa-solid fa-lock";
+                        cell6.appendChild(i1);
+                    }
                     newRow.append(cell6);
+                    
                 }
-                // i2.className = "fa-solid";
-                // i.classList.add("fa-trash-can","deleteAction");
-                // cell6.appendChild(i2);
                 
 
                 tableBody.append(newRow);
