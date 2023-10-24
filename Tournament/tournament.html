@@ -18,10 +18,16 @@
             </a>
         </div>
         
-        <div class="boxElements" id="addTournament" onclick="openForm('New Tournament')">
+        <div class="boxElements" id="addTournament" >
             <p><b>Tournament</b></p>
             <a href="#">
                 <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+        <div class="boxElements">
+            <p><b>Manager</b></p>
+            <a href="#">
+                <i class="fa-solid fa-user-plus"></i>
             </a>
         </div>
         <div class="boxElements" id="logOut">
@@ -42,7 +48,7 @@
                 <form action="#">
                     <div class="input-field">
                         <input id="newTournamentName" type="text" onkeydown="moveInput(event,'newTournamentName','null','startTime')" required>
-                        <label>Tournament Name</label>
+                        <label id="tournamentNameLabel">Tournament Name</label>
                     </div>
                     <div class="input-field">
                         <input id="startTime" type="text" onfocus="this.type='date'" onblur="this.type='text'" onkeydown="moveInput(event,'startTime','newTournamentName','endTime')" required>
@@ -53,7 +59,7 @@
                         <label>Ending Date</label>
                     </div>
                     
-                    <button type="submit" onclick="addTournament()">CREATE</button>
+                    <button id="addUpdateButton" type="submit" onclick="addTournament()">CREATE</button>
                     
                 </form>
             </div>
@@ -73,6 +79,7 @@
                             <th> Event </th>
                             <th> Event Name </th>
                             <th> Starting Date </th>
+                            <th> Ending Date </th>
                             <th> Status </th>
                             <th id="editOptions"> Edit </th>
                         </tr>
