@@ -76,12 +76,11 @@ tableContainer.addEventListener("click",function(event){
         localStorage.setItem("isEdit","true");
         var formHeadingValue = formHeading.innerHTML;
         openForm(eventName,startingDate,endingDate);
-        alert("Edit clicked for: " + eventName);
     }
     else if(target.classList.contains("deleteAction")){
         var row = target.closest("tr");
         var eventName = row.cells[2].textContent;
-        alert("Delete clicked for: " + eventName);
+        deleteTournament(eventName);
     }
     else if (target.tagName === "TD") {
         const row = target.parentNode;
@@ -306,6 +305,23 @@ const getAllTournaments = () => {
 
                 tableBody.append(newRow);
             });
+        })
+        .catch(error => console.log(error));
+}
+
+const deleteTournament = (tournamentId) => {
+    fetch('http://localhost:5050/api/tournament/'+tournamentId, {
+        method: 'DELETE',
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(data => {
+            location.reload();
+            console.log(data);
         })
         .catch(error => console.log(error));
 }
