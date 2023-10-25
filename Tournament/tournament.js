@@ -30,6 +30,9 @@ const addUpdateButton = document.getElementById("addUpdateButton");
 
 var updatedTournamentId;
 
+const search = document.getElementById("searchInput");
+const tableRows = document.getElementsByTagName("tr");
+
 class UpdatedTournamentInfo{
     constructor(){
 
@@ -59,6 +62,8 @@ const onPageLoading = () => {
     }
     //getAllTournaments();
 }
+
+
 
 
 
@@ -328,3 +333,21 @@ const deleteTournament = (tournamentId) => {
 
 getAllTournaments();
 onPageLoading();
+
+search.addEventListener('input',searchTable);
+
+function searchTable(){
+    for(let i=1;i<tableRows.length;i++){
+        let row = tableRows[i].getElementsByTagName("td");
+        let tournamentNames = row[2].textContent.toLowerCase();
+        let searchData = search.value.toLowerCase();
+
+        tableRows[i].classList.toggle('hide',tournamentNames.indexOf(searchData) < 0);
+        tableRows[i].style.setProperty(`--delay`,i/10 + 's');
+    }
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((row,i)=>{
+        console.log("Hey");
+        row.style.backgroundColor = (i%2 == 0) ? '#0000000b' : 'transparent'; 
+    });
+}

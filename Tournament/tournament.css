@@ -305,6 +305,7 @@ main.table{
     border-radius: .6rem;
 
     overflow: auto;
+    /* overflow: overlay; */
 }
 
 .table_body::-webkit-scrollbar{
@@ -358,7 +359,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover{
-    background-color: #fff6;
+    background-color: #fff6 !important;
 }
 
 .editOptions{
@@ -393,3 +394,33 @@ tbody tr:hover{
     background-color: #00bcd4;
     color: #103c42;
 }
+
+tbody tr{
+    --delay: 5s;
+    transition: .5s ease-in-out var(--delay), background-color 0s;
+}
+
+tbody tr.hide{
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+tbody tr td,
+tbody tr td p,
+tbody tr td img{
+    transition: .2s ease-in-out;
+}
+
+tbody tr.hide td,
+tbody tr.hide td p{
+    padding: 0;
+    font: 0 / 0 sans-serif;
+    transition: .2s ease-in-out .5s;
+}
+
+tbody tr.hide td img{
+    width: 0;
+    height: 0;
+    transition: .2s ease-in-out .5s;
+}
+
