@@ -300,7 +300,7 @@ const getAllTournaments = () => {
                         cell7.appendChild(i2);
                     }else{
                         var i1 = document.createElement("i");
-                        i1.className = "fa-solid fa-lock";
+                        i1.className = "fa-solid fa-lock lock";
                         cell7.appendChild(i1);
                     }
                     newRow.append(cell7);
@@ -350,4 +350,8 @@ function searchTable(){
         console.log("Hey");
         row.style.backgroundColor = (i%2 == 0) ? '#0000000b' : 'transparent'; 
     });
+}
+
+function printPage(){
+    window.print();
 }

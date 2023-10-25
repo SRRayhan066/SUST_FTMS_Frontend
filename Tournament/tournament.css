@@ -424,3 +424,19 @@ tbody tr.hide td img{
     transition: .2s ease-in-out .5s;
 }
 
+
+/* For Print */
+@media print {
+    .allElements, .editAction, .deleteAction, .lock, .editOptions, .form-popup {
+      display: none;
+    }
+    /* body * {
+        display: none;
+    }
+    .table_body{
+        display: table;
+    }
+    .table_body, .table_body tr, .table_body th, .table_body td {
+        display: table;
+    } */
+}
