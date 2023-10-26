@@ -55,17 +55,24 @@ function moveInput(event, ownId, prevId, nextId){
 }
 
 const onPageLoading = () => {
-    const value = localStorage.getItem("admin");
+    const organizer = localStorage.getItem("organizer");
+    const manager = localStorage.getItem("manager");
     
-    if(value == "false"){
+    if(organizer == "true"){
+        addTeamButton.style.display = "none";
+        editOptions.style.display = "none";
+        editOption.forEach(function(element) {
+            element.style.display = "none";
+        });
+    }else if(manager == "true"){
+
+    }else{
         addTeamButton.style.display = "none";
         logOutButton.style.display = "none";
         editOptions.style.display = "none";
         editOption.forEach(function(element) {
             element.style.display = "none";
         });
-    }else if(value == "true"){
-        addTeamButton.style.display = "none";
     }
 }
 
