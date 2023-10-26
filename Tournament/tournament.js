@@ -51,8 +51,11 @@ let updatedTournamentInfo = new UpdatedTournamentInfo();
 const onPageLoading = () => {
     // getAllTournaments();
     const editOption = document.querySelectorAll(".editOption");
+    const organizer = localStorage.getItem("organizer");
+    const manager = localStorage.getItem("manager");
+
     const value = localStorage.getItem("admin");
-    if(value == "false"){
+    if(organizer == "false" && manager == "false"){
         addTournamentButton.style.display = "none";
         logOutButton.style.display = "none";
         editOptions.style.display = "none";
@@ -287,9 +290,10 @@ const getAllTournaments = () => {
                 cell6.append(p);
                 newRow.append(cell6);
 
-                var cell7 = document.createElement("td");
-                //cell6.className = "editOption";
-                if(localStorage.getItem("admin") === "true"){
+                
+                //cell7.className = "editOption";
+                if(localStorage.getItem("organizer") == "true"){
+                    var cell7 = document.createElement("td");
                     if(currentDate<startingDate){
                         var i1 = document.createElement("i");
                         i1.className = "fa-regular fa-pen-to-square editAction";

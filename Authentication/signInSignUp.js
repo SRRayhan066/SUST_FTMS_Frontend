@@ -33,7 +33,11 @@ function moveInput(event,ownId,nextInputId){
 }
 
 function adminLogin(){
-    postData(email.value , password.value);
+    const organizer = localStorage.getItem("organizer");
+    const manager = localStorage.getItem("manager");
+
+    if(manager == "true") toTournament();
+    else postData(email.value , password.value);
     // if(email.value == "admin" && password.value == "admin"){
         
     //     window.location.href = "../Tournament/tournament.html";

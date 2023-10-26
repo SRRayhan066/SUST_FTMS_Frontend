@@ -10,12 +10,14 @@
 </head>
 <body>
     <div class="background"></div>
-    <div class="loginButton">
-        <button class="btn" onclick="toLoginPage()"><i class="fa-solid fa-user"></i> LOGIN AS ORGANIZER</button>
-    </div>
     <div class="content">
         <h1>Welcome to <span>SUST Football Tournament</span></h1>
-        <button class="btn" onClick="toTournament()">TO THE TOURNAMENT <i class="fa-solid fa-arrow-right"></i></button>
+        <div class="allButtons">
+            <button class="btn" id="organizerButton"><i class="fa-solid fa-user-tie"></i> LOGIN AS ORGANIZER</button>
+            <button class="btn" id="managerButton"><i class="fa-solid fa-user"></i> LOGIN AS MANAGER</button>
+            <button class="btn" id="toTheTournamentButton" onClick="toTournament()">TO THE TOURNAMENT <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        
     </div>
 </body>
 </html>

@@ -64,6 +64,8 @@ const onPageLoading = () => {
         editOption.forEach(function(element) {
             element.style.display = "none";
         });
+    }else if(value == "true"){
+        addTeamButton.style.display = "none";
     }
 }
 
