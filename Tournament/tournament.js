@@ -279,11 +279,12 @@ const getAllTournaments = () => {
                 newRow.append(cell3);
 
                 var cell4 = document.createElement("td");
-                cell4.textContent = item.startingDate;
+                
+                cell4.textContent = formatDate(startingDate);
                 newRow.append(cell4);
 
                 var cell5 = document.createElement("td");
-                cell5.textContent = item.endingDate;
+                cell5.textContent = formatDate(endingDate);
                 newRow.append(cell5);
 
                 var cell6 = document.createElement("td");
@@ -358,4 +359,30 @@ function searchTable(){
 
 function printPage(){
     window.print();
+}
+
+function formatDate(date) {
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
+  
+    const dayWithSuffix = getDayWithSuffix(day);
+  
+    return `${dayWithSuffix} ${month} ${year}`;
+}
+
+function getDayWithSuffix(day) {
+    if (day >= 11 && day <= 13) {
+      return day + "th";
+    }
+    switch (day % 10) {
+      case 1:
+        return day + "st";
+      case 2:
+        return day + "nd";
+      case 3:
+        return day + "rd";
+      default:
+        return day + "th";
+    }
 }
