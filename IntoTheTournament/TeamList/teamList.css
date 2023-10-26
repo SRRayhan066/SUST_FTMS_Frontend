@@ -416,7 +416,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover{
-    background-color: #fff6;
+    background-color: #fff6 !important;
 }
 
 .editOptions{
@@ -474,4 +474,10 @@ tbody tr.hide td img{
     width: 0;
     height: 0;
     transition: .2s ease-in-out .5s;
+}
+
+@media print {
+    .allElements, .editAction, .deleteAction, .lock, .editOptions, .form-popup {
+      display: none;
+    }
 }

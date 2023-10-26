@@ -13,9 +13,23 @@ const playerForm = document.getElementById("playerForm");
 
 const tableContainer = document.getElementById("tableContainer");
 
+const search = document.getElementById("searchInput");
+const tableRows = document.getElementsByTagName("tr");
+
 const onPageLoading = () =>{
     const value = localStorage.getItem("admin");
-    if(value == "false"){
+    const organizer = localStorage.getItem("organizer");
+    const manager = localStorage.getItem("manager");
+
+    if(organizer == "true"){
+        addPlayerButton.style.display = "none";
+        editOptions.style.display = "none";
+        editOption.forEach(function(element) {
+            element.style.display = "none";
+        });
+    }else if(manager == "true"){
+
+    }else{
         addPlayerButton.style.display = "none";
         editOptions.style.display = "none";
         logOutButton.style.display = "none";
@@ -69,3 +83,25 @@ tableContainer.addEventListener("click",function(event){
 });
 
 onPageLoading();
+
+search.addEventListener('input',searchTable);
+
+function searchTable(){
+    for(let i=1;i<tableRows.length;i++){
+        let row = tableRows[i].getElementsByTagName("td");
+        let tournamentNames = row[2].textContent.toLowerCase();
+        let searchData = search.value.toLowerCase();
+
+        tableRows[i].classList.toggle('hide',tournamentNames.indexOf(searchData) < 0);
+        tableRows[i].style.setProperty(`--delay`,i/10 + 's');
+    }
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((row,i)=>{
+        console.log("Hey");
+        row.style.backgroundColor = (i%2 == 0) ? '#0000000b' : 'transparent'; 
+    });
+}
+
+function printPage(){
+    window.print();
+}

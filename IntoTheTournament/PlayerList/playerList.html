@@ -12,7 +12,7 @@
     <div class="background"></div>
     <div class="allElements">
         <div class="box">
-            <input type="text" placeholder="Player Name">
+            <input type="text" placeholder="Player Name" id="searchInput">
             <a href="#">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
@@ -29,6 +29,12 @@
                 <i class="fa-solid fa-timeline fa-rotate-270"></i>
             </a>
         </div>
+        <div class="boxElements" id="addTeamManager">
+            <p><b>Manager</b></p>
+            <a href="#">
+                <i class="fa-solid fa-person-circle-plus"></i>
+            </a>
+        </div>
         <div class="boxElements" id="refree" onclick="toRefree()">
             <p><b>Refrees</b></p>
             <a href="#">
@@ -39,6 +45,12 @@
             <p><b>Add Player</b></p>
             <a href="#">
                 <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="printOut" onclick="printPage()">
+            <p><b>Print</b></p>
+            <a href="#">
+                <i class="fa-solid fa-print"></i>
             </a>
         </div>
         <div class="boxElements" id="logOut">

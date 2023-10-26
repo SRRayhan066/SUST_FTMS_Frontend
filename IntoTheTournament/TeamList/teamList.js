@@ -149,3 +149,7 @@ function searchTable(){
         row.style.backgroundColor = (i%2 == 0) ? '#0000000b' : 'transparent'; 
     });
 }
+
+function printPage(){
+    window.print();
+}
