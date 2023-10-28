@@ -153,3 +153,7 @@ function searchTable(){
 function printPage(){
     window.print();
 }
+
+function toManager(){
+    window.location.href = "../ManagerList/managerList.html";
+}

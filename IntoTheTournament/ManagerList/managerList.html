@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Managers</title>
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="managerList.css">
+    <script src="managerList.js" defer></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="allElements">
+        <div class="box">
+            <input type="text" placeholder="Manager Name" id="searchInput">
+            <a href="#">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="teamList" onclick="toTeamList()">
+            <p><b>Team List</b></p>
+            <a href="#">
+                <i class="fa-solid fa-people-group"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="fixture" onclick="toFixture()">
+            <p><b>Fixture</b></p>
+            <a href="#">
+                <i class="fa-solid fa-timeline fa-rotate-270"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="addTeamManager" onclick="openForm('Manager')">
+            <p><b>Manager</b></p>
+            <a href="#">
+                <i class="fa-solid fa-person-circle-plus"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="refree">
+            <p><b>Refrees</b></p>
+            <a href="#">
+                <i class="fa-solid fa-flag-checkered"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="printOut" onclick="printPage()">
+            <p><b>Print</b></p>
+            <a href="#">
+                <i class="fa-solid fa-print"></i>
+            </a>
+        </div>
+        <div class="boxElements" id="logOut">
+            <p><b>Logout</b></p>
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="form-popup relation" id="refreeForm">
+        <i class="fa-regular fa-circle-xmark" onclick="closeForm()"></i>
+        <div class="form-box login" id="teamSubmissionPage">
+            <div class="form-details">
+                <img src="/Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2 id="refreeFormHeading"></h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input id="refreeID" type="email" required>
+                        <label>E-mail</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="refreeName" type="text" required>
+                        <label>Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="refreeInstitute" type="text" required>
+                        <label>Department Name</label>
+                    </div>
+
+                    <button type="submit" id="addRefree">ADD</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tournamentList relation">
+        <main class="table">
+            <section class="table_header">
+                <h1 id="tournamentHeading"></h1>
+            </section>
+            <section class="table_body">
+                <table id="tableContainer">
+                    <thead>
+                        <tr>
+                            <th> Serial No. </th>
+                            <th> E-mail </th>
+                            <th> Name </th>
+                            <th> Department </th>
+                            <th class="editOptions" id="editOptions"> Edit </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td> abcd@gmail.com </td>
+                            <td> ABC </td>
+                            <td> XYZ </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td> xyz@gmail.com </td>
+                            <td> ABC2 </td>
+                            <td> XYZ </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 3 </td>
+                            <td> pqrs@gmail.com </td>
+                            <td> ABCD3 </td>
+                            <td> XYZ </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
