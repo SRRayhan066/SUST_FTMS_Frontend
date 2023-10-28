@@ -4,6 +4,9 @@ const matchForm = document.getElementById("matchForm");
 const matchForm2 = document.getElementById("matchForm2");
 const matchForm3 = document.getElementById("matchForm3");
 
+const search = document.getElementById("searchInput");
+const tableRows = document.getElementsByTagName("tr");
+
 function toNext(){
     window.location.href = "../RoundOf16/fixture.html";
 }
@@ -92,3 +95,29 @@ function toMatchForm2(){
     openForm2();
 }
 
+function printPage(){
+    window.print();
+}
+
+search.addEventListener('input',searchTable);
+
+function searchTable(){
+    for(let i=1;i<tableRows.length;i++){
+        let row = tableRows[i].getElementsByTagName("td");
+        let groupANames = row[1].textContent.toLowerCase();
+        let groupBNames = row[2].textContent.toLowerCase();
+        let searchData = search.value.toLowerCase();
+
+        // if(groupANames.indexOf(searchData) < 0 && groupBNames.indexOf(searchData) < 0){
+        //     tableRows[i].classList.toggle('hide',true);
+        // }
+        tableRows[i].classList.toggle('hide',groupANames.indexOf(searchData) < 0 && groupBNames.indexOf(searchData) < 0);
+        //tableRows[i].classList.toggle('hide',groupBNames.indexOf(searchData) < 0);
+        tableRows[i].style.setProperty(`--delay`,i/10 + 's');
+    }
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((row,i)=>{
+        console.log("Hey");
+        row.style.backgroundColor = (i%2 == 0) ? '#0000000b' : 'transparent'; 
+    });
+}

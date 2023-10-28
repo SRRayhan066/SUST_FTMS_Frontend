@@ -13,7 +13,7 @@
         <div class="background"></div>
         <div class="allElements">
             <div class="box">
-                <input type="text" placeholder="Tournament Name">
+                <input type="text" placeholder="Team Name" id="searchInput">
                 <a href="#">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
@@ -30,10 +30,22 @@
                     <i class="fa-solid fa-timeline fa-rotate-270"></i>
                 </a>
             </div>
+            <div class="boxElements" id="addTeamManager">
+                <p><b>Manager</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-person-circle-plus"></i>
+                </a>
+            </div>
             <div class="boxElements" id="refree" onclick="toRefree()">
                 <p><b>Refrees</b></p>
                 <a href="#">
                     <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="printOut" onclick="printPage()">
+                <p><b>Print</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-print"></i>
                 </a>
             </div>
             <div class="boxElements" id="logOut">
@@ -370,43 +382,43 @@
                         <tbody>
                             <tr>
                                 <td> 1 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> STAT vs CEP <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> STAT vs CEP </td>
                             </tr>
                             <tr>
                                 <td> 2 </td>
-                                <td class="groupA"> CSE vs EEE <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> FET vs MAT <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> CSE vs EEE </td>
+                                <td class="groupB"> FET vs MAT </td>
                             </tr>
                             <tr>
                                 <td> 3 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> BMB vs PHY </td>
                             </tr>
                             <tr>
                                 <td> 4 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> STAT vs CEP <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> STAT vs CEP </td>
                             </tr>
                             <tr>
                                 <td> 5 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> BMB vs PHY </td>
                             </tr>
                             <tr>
                                 <td> 6 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> BMB vs PHY </td>
                             </tr>
                             <tr>
                                 <td> 7 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> BMB vs PHY </td>
                             </tr>
                             <tr>
                                 <td> 8 </td>
-                                <td class="groupA"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionA"></i></td>
-                                <td class="groupB"> BMB vs PHY <i class="fa-regular fa-pen-to-square editActionB"></i></td>
+                                <td class="groupA"> BMB vs PHY </td>
+                                <td class="groupB"> BMB vs PHY </td>
                             </tr>
                         </tbody>
                     </table>
