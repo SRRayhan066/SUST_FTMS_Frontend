@@ -44,8 +44,8 @@ tableContainer.addEventListener("click",function(event){
     }
     else if(target.classList.contains("deleteAction")){
         var row = target.closest("tr");
-        let refreeName = row.cells[2].textContent;
-        alert("Delete clicked for: " + refreeName);
+        let email = row.cells[1].textContent;
+        deleteTournament(tournamentName,email);
     }
 });
 
@@ -268,6 +268,23 @@ const getATeacher = (email,cell3,cell4) => {
             }
             
             
+        })
+        .catch(error => console.log(error));
+}
+
+const deleteTournament = (tournamentId,teamManagerEmail) => {
+    fetch('http://localhost:5050/api/tournament/teammanager/'+tournamentId+'/'+teamManagerEmail, {
+        method: 'DELETE',
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(data => {
+            location.reload();
+            console.log(data);
         })
         .catch(error => console.log(error));
 }
