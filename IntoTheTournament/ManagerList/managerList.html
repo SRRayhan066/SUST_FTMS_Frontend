@@ -32,7 +32,7 @@
         <div class="boxElements" id="addTeamManager" onclick="openForm('Manager')">
             <p><b>Manager</b></p>
             <a href="#">
-                <i class="fa-solid fa-person-circle-plus"></i>
+                <i class="fa-solid fa-plus"></i>
             </a>
         </div>
         <div class="boxElements" id="refree">
@@ -65,19 +65,22 @@
                 <h2 id="refreeFormHeading"></h2>
                 <form action="#">
                     <div class="input-field">
-                        <input id="refreeID" type="email" required>
-                        <label>E-mail</label>
+                        <!-- <input id="managerDepartment" type="text" required> -->
+                        <select id="managerDepartment">
+                            <option>Select Department</option>
+                        </select>
+                        <!-- <label>Department Name</label> -->
                     </div>
                     <div class="input-field">
-                        <input id="refreeName" type="text" required>
-                        <label>Name</label>
+                        <select id="managerMail">
+                            <option>Select E-Mail</option>
+                        </select>
                     </div>
                     <div class="input-field">
-                        <input id="refreeInstitute" type="text" required>
-                        <label>Department Name</label>
+                        <input id="managerName" type="text" required>
+                        <label id="managerNameLabel">Name</label>
                     </div>
-
-                    <button type="submit" id="addRefree">ADD</button>
+                    <button type="submit" id="addManager">ADD</button>
                     
                 </form>
             </div>
@@ -100,28 +103,16 @@
                             <th class="editOptions" id="editOptions"> Edit </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td> 1 </td>
-                            <td> abcd@gmail.com </td>
-                            <td> ABC </td>
-                            <td> XYZ </td>
-                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
-                        </tr>
-                        <tr>
+                    <tbody id="tableBody">
+                        
+                        <!-- <tr>
                             <td> 2 </td>
                             <td> xyz@gmail.com </td>
                             <td> ABC2 </td>
                             <td> XYZ </td>
-                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> pqrs@gmail.com </td>
-                            <td> ABCD3 </td>
-                            <td> XYZ </td>
-                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
-                        </tr>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr> -->
+                        
                     </tbody>
                 </table>
             </section>

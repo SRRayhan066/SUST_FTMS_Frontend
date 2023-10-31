@@ -259,16 +259,19 @@ const getAllTournaments = () => {
                 p.className = "status";
                 if(currentDate>endingDate){
                     image.src = finishedTournamentImage;
+                    localStorage.setItem("upcoming","false");
                     p.classList.add("finished");
                     p.innerHTML = `Finished`;
                 }else if(currentDate<startingDate){
                     image.src = upcomingTournamentImage;
+                    localStorage.setItem("upcoming","true");
                     p.classList.add("upcoming");
                     p.innerHTML = `Upcoming`;
                 }else{
                     image.src = runningTournamentImage;
                     p.classList.add("running");
                     p.innerHTML = `Running`;
+                    localStorage.setItem("upcoming","false");
                 }
 
                 cell2.append(image);
@@ -297,6 +300,7 @@ const getAllTournaments = () => {
                     var cell7 = document.createElement("td");
                     if(currentDate<startingDate){
                         var i1 = document.createElement("i");
+                        
                         i1.className = "fa-regular fa-pen-to-square editAction";
                 // i1.classList.add("fa-pen-to-square","editAction");
                         var i2 = document.createElement("i");
@@ -305,6 +309,7 @@ const getAllTournaments = () => {
                         cell7.appendChild(i2);
                     }else{
                         var i1 = document.createElement("i");
+                        
                         i1.className = "fa-solid fa-lock lock";
                         cell7.appendChild(i1);
                     }
