@@ -41,7 +41,7 @@
                 <i class="fa-solid fa-person-circle-plus"></i>
             </a>
         </div>
-        <div class="boxElements" id="addTeam" onclick="openForm()">
+        <div class="boxElements" id="addTeam">
             <p><b>Add Team</b></p>
             <a href="#">
                 <i class="fa-solid fa-plus"></i>
@@ -73,16 +73,18 @@
                 <h2>New Team</h2>
                 <form action="#">
                     <div class="input-field">
-                        <select name="departmentName" id="departmentsList" onkeydown="moveInput(event, 'departmentsList', 'null', 'submissionTime')">
+                        <input id="teamName" type="text" onkeydown="moveInput(event, 'departmentsList', 'null', 'submissionTime')" required>
+                        <label id="teamNameLabel">Team Name</label>
+                        <!-- <select name="departmentName" id="departmentsList" onkeydown="moveInput(event, 'departmentsList', 'null', 'submissionTime')">
                             <option value="none">Select Department</option>
                             <option value="none">Computer Science and Engineering</option>
                             <option value="none">Software Engineering</option>
                             <option value="none">Electrical and Electronic Engineering</option>
-                        </select>
+                        </select> -->
                     </div>
                     <div class="input-field">
                         <input id="submissionTime" type="text" onfocus="this.type='date'" onblur="this.type='text'" onkeydown="moveInput(event, 'submissionTime', 'departmentsList', 'teamManager')" required>
-                        <label>Submission Date</label>
+                        <label id="submissionTimeLabel">Submission Date</label>
                     </div>
                     <div class="input-field">
                         <input id="teamManager" type="text" onkeydown="moveInput(event, 'teamManager', 'submissionTime', 'teamCaptain')" required>
@@ -168,7 +170,7 @@
                         <label>Player20 Registration No.</label>
                     </div>
                     
-                    <button type="submit" id="nextButton">Submit</button>
+                    <button type="submit" id="submitTeamButton">Submit</button>
                     
                 </form>
             </div>

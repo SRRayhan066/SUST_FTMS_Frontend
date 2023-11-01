@@ -53,9 +53,10 @@ const onPageLoading = () => {
     const editOption = document.querySelectorAll(".editOption");
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
-
-    const value = localStorage.getItem("admin");
-    if(organizer == "false" && manager == "false"){
+    if(manager == "true"){
+        editOptions.style.display = "none";
+        addTournamentButton.style.display = "none";
+    }else if(organizer == "false" && manager == "false"){
         addTournamentButton.style.display = "none";
         logOutButton.style.display = "none";
         editOptions.style.display = "none";

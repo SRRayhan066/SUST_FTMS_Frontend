@@ -51,13 +51,12 @@ function adminLogin(){
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
 
-    if(manager == "true") toTournament();
-    else postData(email.value , password.value);
-    // if(email.value == "admin" && password.value == "admin"){
-        
-    //     window.location.href = "../Tournament/tournament.html";
-    //     alert("Login Successfull");
-    // }
+    if(manager == "true"){
+        if(email.value != "operator@sust.edu"){
+            localStorage.setItem("email","arafath-che@sust.edu");
+            toTournament();
+        }
+    }else postData(email.value , password.value);
 }
 
 const postData = (email,password) => {
