@@ -5,6 +5,21 @@ const formPopup = document.querySelector(".form-popup");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 
+const bottomLink = document.querySelector(".bottom-link");
+const signUpForm = document.querySelector(".form-box signup");
+const formBox = document.querySelector("formBox");
+
+function onPageLoading(){
+    const manager = localStorage.getItem("manager");
+    if(manager == "true"){
+
+    }else{
+        bottomLink.style.display = "none";
+        signUpForm.style.display = "none";
+        // formPopup.classList.add("organizerFormHeight");
+    }
+}
+
 loginSignupLink.forEach(link => {
     link.addEventListener("click",(e)=>{
         e.preventDefault();
@@ -72,3 +87,4 @@ const postData = (email,password) => {
         .catch(error => console.log(error));
 }
 
+onPageLoading();

@@ -47,12 +47,20 @@
     top: 50%;
     left: 50%;
     max-width: 720px;
-    height: 450px;
+    height: 500px;
     width: 100%;
     background: white;
     border-radius: 10px;
     border: 2px solid var(--colorWhite);
     transform: translate(-50%,-50%);
+}
+
+.managerFormHeight{
+    height: 500px;
+}
+
+.organizerFormHeight{
+    height: 450px;
 }
 
 .form-popup .form-box{
@@ -85,6 +93,14 @@
     background-position: center;
 }
 
+.signup .form-content{
+    padding: 70px 35px;
+}
+
+.login .form-content{
+    padding: 100px 35px;
+}
+
 .form-box h2{
     text-align: center;
     margin-bottom: 30px;
@@ -92,7 +108,7 @@
 
 .form-box .form-content{
     width: 100%;
-    padding: 85px 35px;
+    /* padding: 85px 35px; */
 }
 
 form .input-field {
