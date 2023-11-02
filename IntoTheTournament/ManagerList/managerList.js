@@ -69,10 +69,11 @@ search.addEventListener('input',searchTable);
 function searchTable(){
     for(let i=1;i<tableRows.length;i++){
         let row = tableRows[i].getElementsByTagName("td");
-        let tournamentNames = row[2].textContent.toLowerCase();
+        let managerName = row[2].textContent.toLowerCase();
+        let departmentName = row[3].textContent.toLowerCase();
         let searchData = search.value.toLowerCase();
 
-        tableRows[i].classList.toggle('hide',tournamentNames.indexOf(searchData) < 0);
+        tableRows[i].classList.toggle('hide',managerName.indexOf(searchData) < 0 && departmentName.indexOf(searchData) < 0);
         tableRows[i].style.setProperty(`--delay`,i/10 + 's');
     }
 
@@ -235,6 +236,7 @@ const getAllManager = () => {
 
                 if(localStorage.getItem("upcoming") == "true"){
                     var cell5 = document.createElement("td");
+                    cell5.className = "editOption";
                     var i1 = document.createElement("i");
                     i1.className = "fa-solid fa-trash-can deleteAction";
                     cell5.appendChild(i1);

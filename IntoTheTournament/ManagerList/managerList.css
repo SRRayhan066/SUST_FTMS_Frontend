@@ -420,7 +420,7 @@ tbody tr:hover{
 }
 
 .editOptions{
-    display: block;
+    position: sticky;
 }
 
 .deleteAction{
