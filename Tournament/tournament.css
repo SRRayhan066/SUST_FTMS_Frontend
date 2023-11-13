@@ -73,12 +73,21 @@
 }
 
 .box a .fa-solid{
+    outline: none;
     color: rgb(66, 173, 116);
     font-size: 18px;
 }
 
 .box a .fa-solid:hover{
     color: rgb(22, 132, 73);
+}
+
+.box:focus-within input {
+    width: 400px; /* Set the width for the focused state */
+}
+
+.box:focus-within a {
+    outline: none; /* Set the width for the focused state */
 }
 
 .boxElements{
@@ -110,14 +119,25 @@
     text-align: center;
 }
 
+.boxElements:focus-within p {
+    width: 100px; /* Set the width for the focused state */
+    font-size: 16px;
+}
+
 .boxElements a .fa-solid{
+    outline: none;
     color: rgb(66, 173, 116);
     font-size: 18px;
+}
+
+.boxElements:focus-within a {
+    outline: none;
 }
 
 .boxElements a .fa-solid:hover{
     color: rgb(22, 132, 73);
 }
+
 
 
 .form-popup {

@@ -32,28 +32,12 @@ const teamManager = document.getElementById("teamManager");
 
 const teamCaptain = document.getElementById("teamCaptain");
 
-var departmentCode;
+const tableBody = document.getElementById("tableBody");
 
-// const player1 = document.getElementById("player1");
-// const player2 = document.getElementById("player2");
-// const player3 = document.getElementById("player3");
-// const player4 = document.getElementById("player4");
-// const player5 = document.getElementById("player5");
-// const player6 = document.getElementById("player6");
-// const player7 = document.getElementById("player7");
-// const player8 = document.getElementById("player8");
-// const player9 = document.getElementById("player9");
-// const player10 = document.getElementById("player10");
-// const player11 = document.getElementById("player11");
-// const player12 = document.getElementById("player12");
-// const player13 = document.getElementById("player13");
-// const player14 = document.getElementById("player14");
-// const player15 = document.getElementById("player15");
-// const player16 = document.getElementById("player16");
-// const player17 = document.getElementById("player17");
-// const player18 = document.getElementById("player18");
-// const player19 = document.getElementById("player19");
-// const player20 = document.getElementById("player20");
+var departmentCode;
+let teacherName;
+var departmentName;
+var balerName;
 
 
 const department = {
@@ -62,6 +46,7 @@ const department = {
 }
 
 const departments = [department];
+
 
 function toNext(){
     closeForm();
@@ -72,6 +57,53 @@ function toPrevious(){
     eventForm2.classList.remove("open-eventForm");
     openForm();
 }
+
+const getATeacher = (email) => {
+    fetch('http://localhost:5050/api/teacher/'+email)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("email "+ email);
+            
+            //console.log(dataArray);
+            
+            teacherName = data.name;
+            
+            console.log(data);
+            
+            departmentCode = data.deptCode;
+            balerName = data.name;
+            if(email != managerMail){
+                return balerName;
+            }
+            console.log(departmentCode);
+
+            for(let i=0;i<departments.length;i++){
+                if(departments[i].deptCode == departmentCode){
+                    teamName.value = departments[i].deptName;
+                    teamName.disabled = true;
+                    document.getElementById("teamNameLabel").style.display = "none";
+                    break;
+                }
+            }
+
+            submissionTime.value = currentDate();
+            submissionTime.disabled = true;
+            document.getElementById("submissionTimeLabel").style.display = "none";
+
+            teamManager.value = teacherName;
+            teamManager.disabled = true;
+            document.getElementById("teamManagerLabel").style.display = "none";
+            
+        })
+        .catch(error => console.log(error));
+}
+
+
 
 function toPlayerList(){
     window.location.href = "../PlayerList/playerList.html";
@@ -102,7 +134,6 @@ function moveInput(event, ownId, prevId, nextId){
 const onPageLoading = () => {
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
-    
     if(organizer == "true"){
         addTeamButton.style.display = "none";
         editOptions.style.display = "none";
@@ -220,45 +251,13 @@ const getAllDepartment = () => {
 getAllDepartment();
 
 
-const getATeacher = (email) => {
-    fetch('http://localhost:5050/api/teacher/'+email)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("ERROR: ${response.status}");
-            }
-            return response.json();
-        })
-        .then(data => {
-            //console.log(dataArray);
-            const teacherName = data.name;
-            departmentCode = data.deptCode;
 
-            for(let i=0;i<departments.length;i++){
-                if(departments[i].deptCode == departmentCode){
-                    teamName.value = departments[i].deptName;
-                    teamName.disabled = true;
-                    document.getElementById("teamNameLabel").style.display = "none";
-                    break;
-                }
-            }
-
-            submissionTime.value = currentDate();
-            submissionTime.disabled = true;
-            document.getElementById("submissionTimeLabel").style.display = "none";
-
-            teamManager.value = teacherName;
-            teamManager.disabled = true;
-            document.getElementById("teamManagerLabel").style.display = "none";
-            
-        })
-        .catch(error => console.log(error));
-}
 
 
 
 addTeamButton.addEventListener("click",function(){
-    openForm();
     getATeacher(managerMail);
+    openForm();
 });
 
 function currentDate(){
@@ -286,14 +285,6 @@ submitTeamButton.addEventListener("click",function(){
     const isKnockedOut = 0;
     const captainReg = parseInt(teamCaptain.value,10);
     const teamDeptCode = parseInt(departmentCode,10);
-
-    console.log(tournamentName);
-    console.log(submissionDate);
-    console.log(departmentCode);
-    console.log(managerMail);
-    console.log(captainReg);
-    console.log(playersReg);
-    console.log(isKnockedOut);
 
     createTeam(tournamentName,submissionDate,teamDeptCode,managerMail,captainReg,playersReg,isKnockedOut);
 });
@@ -329,3 +320,83 @@ const createTeam = (tournamentId,submissionDate,deptCode,managerMail,captainReg,
         })
         .catch(error => console.log(error));
 }
+
+
+
+const getAllTeam = (tournamentId) => {
+    fetch('http://localhost:5050/api/tournament/teams/'+tournamentId)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(dataArray => {
+            console.log(dataArray);
+            dataArray.forEach(function(item,index){
+                let newRow = document.createElement("tr");
+
+                var cell1 = document.createElement("td");
+                cell1.textContent = index+1;
+                newRow.append(cell1);
+
+                var cell2 = document.createElement("td");
+                cell2.textContent = item.deptCode;
+                newRow.append(cell2);
+
+                var cell3 = document.createElement("td");
+                for(let i=0;i<departments.length;i++){
+                    console.log(departments[i].deptCode);
+                    console.log(departments[i].deptName);
+                    if(departments[i].deptCode == item.deptCode){
+                        cell3.textContent = departments[i].deptName;
+                        break;
+                    }
+                }
+
+                newRow.append(cell3);
+
+                var cell4 = document.createElement("td");
+                cell4.textContent = formatDate(new Date(item.teamSubmissionDate));
+                newRow.append(cell4);
+
+                var cell5 = document.createElement("td");
+                console.log("item mail "+item.teamManagerEmail);
+                //const balerName = 
+                cell5.textContent = item.teamManagerEmail;
+                newRow.append(cell5);
+
+                tableBody.append(newRow);
+            });
+        })
+        .catch(error => console.log(error));
+}
+
+getAllTeam(tournamentName);
+
+function formatDate(date) {
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
+  
+    const dayWithSuffix = getDayWithSuffix(day);
+  
+    return `${dayWithSuffix} ${month} ${year}`;
+}
+
+function getDayWithSuffix(day) {
+    if (day >= 11 && day <= 13) {
+      return day + "th";
+    }
+    switch (day % 10) {
+      case 1:
+        return day + "st";
+      case 2:
+        return day + "nd";
+      case 3:
+        return day + "rd";
+      default:
+        return day + "th";
+    }
+}
+

@@ -177,10 +177,6 @@ const getAllTeacherMail = (deptCode) => {
                 newOption.value = item.name;
                 newOption.text = item.email;
 
-                //console.log(newOption.value);
-                //console.log(newOption.text);
-                //console.log(newOption.text);
-
                 managerMail.add(newOption);
 
             });
@@ -211,7 +207,7 @@ const getAllManager = () => {
             return response.json();
         })
         .then(dataArray => {
-            //console.log(dataArray);
+            console.log(dataArray);
             dataArray.forEach(function(item,index){
                 let newRow = document.createElement("tr");
 
