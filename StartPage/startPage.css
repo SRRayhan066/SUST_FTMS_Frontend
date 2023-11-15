@@ -31,14 +31,33 @@
 
 .content{
     /* color: white; */
-    margin-top: 240px;
+    /* margin-top: 240px; */
+    margin-top: 40px;
     text-align: center;
 }
 
 .content h1{
     color: white;
-    font-size: 65px;
+    font-size: 60px;
     margin-bottom: 10px;
+    margin-top: -20px;
+}
+
+.images{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -10px;
+    /* margin-top: 0px; */
+}
+
+.images .leftImages img{
+    height: 42vh;
+    margin-right: 50vh;
+}
+
+.images .rightImages img{
+    height: 40vh;
+    margin-left: 50vh;
 }
 
 span{

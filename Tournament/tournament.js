@@ -1,6 +1,9 @@
 
 const addTournamentButton = document.getElementById("addTournament");
+const tournamentButton = document.getElementById("tournament");
 const logOutButton = document.getElementById("logOut");
+
+const pTournament = document.getElementById("pTournament");
 
 const editOptions = document.getElementById("editOptions");
 
@@ -50,6 +53,9 @@ let updatedTournamentInfo = new UpdatedTournamentInfo();
 
 const onPageLoading = () => {
     // getAllTournaments();
+    pTournament.style.width = "100px";
+    pTournament.style.fontSize = "16px";
+
     const editOption = document.querySelectorAll(".editOption");
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
@@ -89,6 +95,7 @@ tableContainer.addEventListener("click",function(event){
     else if(target.classList.contains("deleteAction")){
         var row = target.closest("tr");
         var eventName = row.cells[2].textContent;
+        alert("Delete tournament enable");
         deleteTournament(eventName);
     }
     else if (target.tagName === "TD") {
@@ -299,23 +306,25 @@ const getAllTournaments = () => {
                 //cell7.className = "editOption";
                 if(localStorage.getItem("organizer") == "true"){
                     var cell7 = document.createElement("td");
+                    var cell8 = document.createElement("td");
+
                     if(currentDate<startingDate){
                         var i1 = document.createElement("i");
-                        
                         i1.className = "fa-regular fa-pen-to-square editAction";
-                // i1.classList.add("fa-pen-to-square","editAction");
                         var i2 = document.createElement("i");
                         i2.className = "fa-solid fa-trash-can deleteAction";
                         cell7.appendChild(i1);
-                        cell7.appendChild(i2);
+                        cell8.appendChild(i2);
                     }else{
-                        var i1 = document.createElement("i");
-                        
+                        var i1 = document.createElement("i");   
                         i1.className = "fa-solid fa-lock lock";
+                        var i2 = document.createElement("i");   
+                        i2.className = "fa-solid fa-lock lock";
                         cell7.appendChild(i1);
+                        cell8.appendChild(i2);
                     }
                     newRow.append(cell7);
-                    
+                    newRow.append(cell8);
                 }
                 
 
