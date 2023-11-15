@@ -36,12 +36,12 @@ var updatedTournamentId;
 const search = document.getElementById("searchInput");
 const tableRows = document.getElementsByTagName("tr");
 
+
 class UpdatedTournamentInfo{
     constructor(){
 
     }
-    setValue(serialNo,tournamentId,tournamentName,tournamentStartTime,tournamentEndTime){
-        this.serialNo = serialNo;
+    setValue(tournamentId,tournamentName,tournamentStartTime,tournamentEndTime){
         this.tournamentId = tournamentId;
         this.tournamentName = tournamentName;
         this.tournamentStartTime = tournamentStartTime;
@@ -73,7 +73,13 @@ const onPageLoading = () => {
     //getAllTournaments();
 }
 
+function isValidDate(dateString) {
+    // Try creating a Date object from the input
+    var dateObject = new Date(dateString);
 
+    // Check if the created Date object is a valid date and not NaN
+    return !isNaN(dateObject) && dateObject instanceof Date;
+}
 
 
 
@@ -83,14 +89,16 @@ tableContainer.addEventListener("click",function(event){
         addUpdateButton.innerHTML = "Update";
         var row = target.closest("tr");
         let serialNo = row.cells[0].textContent;
+        let eventId = row.cells[1].textContent;
         let eventName = row.cells[2].textContent;
         let startingDate = row.cells[3].textContent;
         let endingDate = row.cells[4].textContent;
-        let eventId = row.cells[2].textContent;
-        updatedTournamentInfo.setValue(serialNo,eventId,eventName,startingDate,endingDate);
+
+        getATournament(eventId);
+        
         localStorage.setItem("isEdit","true");
         var formHeadingValue = formHeading.innerHTML;
-        openForm(eventName,startingDate,endingDate);
+        //openForm(updatedTournamentInfo.tournamentName,updatedTournamentInfo.tournamentStartTime,updatedTournamentInfo.tournamentEndTime);
     }
     else if(target.classList.contains("deleteAction")){
         var row = target.closest("tr");
@@ -155,13 +163,34 @@ function moveInput(event,ownId,prevId,nextId){
     }
 }
 
+const getATournament = (tournamentId) => {
+    fetch('http://localhost:5050/api/tournament/'+tournamentId)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            updatedTournamentInfo.setValue(data.tournamentId,data.tournamentName,data.tournamentStartTime,data.tournamentEndTime);
+            openForm(data.tournamentName,data.startingDate,data.endingDate);
+        })
+        .catch(error => console.log(error));
+}
+
 function addTournament(){
-    const date1 = tournamentStartTime.value;
-    const date2 = tournamentEndTime.value;
+    var date1 = tournamentStartTime.value;
+    var date2 = tournamentEndTime.value;
     const tournamentName = newTournamentName.value;
     
     if(date1=="" || date2=="" || tournamentName==""){
         alert("Please fill all the required data");
+    }
+
+    if(!isValidDate(date2)){
+        console.log(updatedTournamentInfo.tournamentEndTime);
+        date2 = updatedTournamentInfo.tournamentEndTime;
     }
 
     const Date1 = new Date(date1);
@@ -176,9 +205,103 @@ function addTournament(){
         updateTournamentData(tournamentName,date1,date2,updatedTournamentInfo);
     }else{
         //closeForm();
-        postTournamentData(tournamentName,date1,date2);
+        var tournamentId = generateRandomId();
+        postTournamentData(tournamentId,tournamentName,date1,date2);
     }
     
+}
+
+function generateRandomId() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomId = '';
+
+    for (let i = 0; i < 6; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        randomId += characters.charAt(randomIndex);
+    }
+
+    return randomId;
+}
+
+function addOnTable(item,index){
+    let newRow = document.createElement("tr");
+
+    var cell1 = document.createElement("td");
+    cell1.textContent = index+1;
+    newRow.append(cell1);
+
+    var currentDate = new Date();
+    var startingDate = new Date(item.startingDate);
+    var endingDate = new Date(item.endingDate);
+    // console.log(currentDate);
+    var cell2 = document.createElement("td");
+    var image = document.createElement("img");
+    var p = document.createElement("p");
+    p.className = "status";
+    if(currentDate>endingDate){
+        image.src = finishedTournamentImage;
+        localStorage.setItem("upcoming","false");
+        p.classList.add("finished");
+        p.innerHTML = `Finished`;
+    }else if(currentDate<startingDate){
+        image.src = upcomingTournamentImage;
+        localStorage.setItem("upcoming","true");
+        p.classList.add("upcoming");
+        p.innerHTML = `Upcoming`;
+    }else{
+        image.src = runningTournamentImage;
+        p.classList.add("running");
+        p.innerHTML = `Running`;
+        localStorage.setItem("upcoming","false");
+    }
+
+    cell2.textContent = item.tournamentId;
+    newRow.append(cell2);
+
+    var cell3 = document.createElement("td");
+    cell3.textContent = item.tournamentName;
+    newRow.append(cell3);
+
+    var cell4 = document.createElement("td");
+    
+    cell4.textContent = formatDate(startingDate);
+    newRow.append(cell4);
+
+    var cell5 = document.createElement("td");
+    cell5.textContent = formatDate(endingDate);
+    newRow.append(cell5);
+
+    var cell6 = document.createElement("td");
+    cell6.append(p);
+    newRow.append(cell6);
+
+    
+    //cell7.className = "editOption";
+    if(localStorage.getItem("organizer") == "true"){
+        var cell7 = document.createElement("td");
+        var cell8 = document.createElement("td");
+
+        if(currentDate<startingDate){
+            var i1 = document.createElement("i");
+            i1.className = "fa-regular fa-pen-to-square editAction";
+            var i2 = document.createElement("i");
+            i2.className = "fa-solid fa-trash-can deleteAction";
+            cell7.appendChild(i1);
+            cell8.appendChild(i2);
+        }else{
+            var i1 = document.createElement("i");   
+            i1.className = "fa-solid fa-lock lock";
+            var i2 = document.createElement("i");   
+            i2.className = "fa-solid fa-lock lock";
+            cell7.appendChild(i1);
+            cell8.appendChild(i2);
+        }
+        newRow.append(cell7);
+        newRow.append(cell8);
+    }
+    
+
+    tableBody.append(newRow);
 }
 
 
@@ -203,18 +326,18 @@ const updateTournamentData = (tournamentName,startingDate,endingDate,updatedTour
         })
         .then(data => {
             closeForm();
-            location.reload();
             console.log(data);
+            location.reload();
         })
         .catch(error => console.log(error));
 }
 
-const postTournamentData = (tournamentName,startingDate,endingDate) => {
+const postTournamentData = (tournamentId,tournamentName,startingDate,endingDate) => {
     // closeForm();
     fetch('http://localhost:5050/api/tournament', {
         method: 'POST',
         body: JSON.stringify({
-            tournamentId : tournamentName,
+            tournamentId : tournamentId,
             tournamentName : tournamentName,
             startingDate : startingDate,
             endingDate : endingDate
@@ -228,16 +351,15 @@ const postTournamentData = (tournamentName,startingDate,endingDate) => {
                 throw new Error("ERROR: ${response.status}");
             }
             return response.json();
-            // if(response.status == 200){
-            //     alert("Succesfully Event Created");
-            // }
         })
         .then(data => {
             closeForm();
-            location.reload();
+            addOnTable(data,tableBody.rows.length);
         })
         .catch(error => console.log(error));
 }
+
+
 
 const getAllTournaments = () => {
     fetch('http://localhost:5050/api/tournaments')
@@ -251,84 +373,7 @@ const getAllTournaments = () => {
             // console.log(dataArray);
             dataArray.forEach(function(item,index){
                 // console.log(item);
-                let newRow = document.createElement("tr");
-
-                var cell1 = document.createElement("td");
-                cell1.textContent = index+1;
-                newRow.append(cell1);
-
-                var currentDate = new Date();
-                var startingDate = new Date(item.startingDate);
-                var endingDate = new Date(item.endingDate);
-                // console.log(currentDate);
-                var cell2 = document.createElement("td");
-                var image = document.createElement("img");
-                var p = document.createElement("p");
-                p.className = "status";
-                if(currentDate>endingDate){
-                    image.src = finishedTournamentImage;
-                    localStorage.setItem("upcoming","false");
-                    p.classList.add("finished");
-                    p.innerHTML = `Finished`;
-                }else if(currentDate<startingDate){
-                    image.src = upcomingTournamentImage;
-                    localStorage.setItem("upcoming","true");
-                    p.classList.add("upcoming");
-                    p.innerHTML = `Upcoming`;
-                }else{
-                    image.src = runningTournamentImage;
-                    p.classList.add("running");
-                    p.innerHTML = `Running`;
-                    localStorage.setItem("upcoming","false");
-                }
-
-                cell2.append(image);
-                newRow.append(cell2);
-
-                var cell3 = document.createElement("td");
-                cell3.textContent = item.tournamentName;
-                newRow.append(cell3);
-
-                var cell4 = document.createElement("td");
-                
-                cell4.textContent = formatDate(startingDate);
-                newRow.append(cell4);
-
-                var cell5 = document.createElement("td");
-                cell5.textContent = formatDate(endingDate);
-                newRow.append(cell5);
-
-                var cell6 = document.createElement("td");
-                cell6.append(p);
-                newRow.append(cell6);
-
-                
-                //cell7.className = "editOption";
-                if(localStorage.getItem("organizer") == "true"){
-                    var cell7 = document.createElement("td");
-                    var cell8 = document.createElement("td");
-
-                    if(currentDate<startingDate){
-                        var i1 = document.createElement("i");
-                        i1.className = "fa-regular fa-pen-to-square editAction";
-                        var i2 = document.createElement("i");
-                        i2.className = "fa-solid fa-trash-can deleteAction";
-                        cell7.appendChild(i1);
-                        cell8.appendChild(i2);
-                    }else{
-                        var i1 = document.createElement("i");   
-                        i1.className = "fa-solid fa-lock lock";
-                        var i2 = document.createElement("i");   
-                        i2.className = "fa-solid fa-lock lock";
-                        cell7.appendChild(i1);
-                        cell8.appendChild(i2);
-                    }
-                    newRow.append(cell7);
-                    newRow.append(cell8);
-                }
-                
-
-                tableBody.append(newRow);
+               addOnTable(item,index);
             });
         })
         .catch(error => console.log(error));
