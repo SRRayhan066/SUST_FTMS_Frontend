@@ -7,6 +7,34 @@ const matchForm3 = document.getElementById("matchForm3");
 const search = document.getElementById("searchInput");
 const tableRows = document.getElementsByTagName("tr");
 
+const porichoy = document.getElementById("porichoy");
+
+const logOut = document.getElementById("logOut");
+const pFixture = document.getElementById("pFixture");
+
+
+const onPageLoading = () =>{
+    const organizer = localStorage.getItem("organizer");
+    const manager = localStorage.getItem("manager");
+    const player = localStorage.getItem("player");
+
+    pFixture.style.width = "80px";
+    pFixture.style.fontSize = "16px";
+
+    if(organizer == "true"){
+        
+    }else if(manager == "true"){
+
+    }else if(player == "true"){
+
+    }else{
+        porichoy.innerHTML = "General";
+        logOut.style.display = "none";
+    }
+}
+
+onPageLoading();
+
 function toNext(){
     window.location.href = "../RoundOf16/fixture.html";
 }

@@ -6,6 +6,7 @@ const logOutButton = document.getElementById("logOut");
 const pTournament = document.getElementById("pTournament");
 
 const editOptions = document.getElementById("editOptions");
+const deleteOptions = document.getElementById("deleteOptions");
 
 
 const eventForm = document.getElementById("eventForm");
@@ -36,6 +37,11 @@ var updatedTournamentId;
 const search = document.getElementById("searchInput");
 const tableRows = document.getElementsByTagName("tr");
 
+const eventCodes = document.getElementById("eventCodes");
+
+const porichoy = document.getElementById("porichoy");
+const profile = document.getElementById("profile");
+
 
 class UpdatedTournamentInfo{
     constructor(){
@@ -57,21 +63,45 @@ const onPageLoading = () => {
     pTournament.style.fontSize = "16px";
 
     const editOption = document.querySelectorAll(".editOption");
+    const eventCode = document.querySelectorAll(".eventCode");
+
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
+    const player = localStorage.getItem("player");
+
+    // eventCode.forEach(function(element){
+    //     console.log("it works");
+    //     element.style.display = "none";
+    // });
+
+    // editOption.forEach(function(element) {
+    //     console.log("it worksl");
+    //     element.style.display = "none";
+    // });
+
     if(manager == "true"){
         editOptions.style.display = "none";
         addTournamentButton.style.display = "none";
-    }else if(organizer == "false" && manager == "false"){
+        deleteOptions.style.display = "none";
+    }else if(organizer == "true"){
+
+    }else if(player == "true"){
+        
+    }else{
         addTournamentButton.style.display = "none";
         logOutButton.style.display = "none";
         editOptions.style.display = "none";
-        editOption.forEach(function(element) {
-            element.style.display = "none";
-        });
+        deleteOptions.style.display = "none";
+        eventCodes.style.display = "none";
+        profile.style.display = "none";
+
+        porichoy.innerHTML = "General";
+        
     }
     //getAllTournaments();
 }
+
+
 
 function isValidDate(dateString) {
     // Try creating a Date object from the input
@@ -110,10 +140,24 @@ tableContainer.addEventListener("click",function(event){
         const row = target.parentNode;
 
         const serialNo = row.cells[0].textContent;
-        const eventName = row.cells[2].textContent;
+        var eventName;
         const startingDate = row.cells[3].textContent;
         const status = row.cells[4].textContent;
 
+        const organizer = localStorage.getItem("organizer");
+        const manager = localStorage.getItem("manager");
+        const player = localStorage.getItem("player");
+
+        if(organizer == "true"){
+
+        }else if(manager == "true"){
+            
+        }else if(player == "true"){
+
+        }else{
+            eventName = row.cells[1].textContent;
+        }
+        
         localStorage.setItem("tournamentName",eventName);
         window.location.href = "../IntoTheTournament/TeamList/teamList.html";
     }
@@ -223,6 +267,10 @@ function generateRandomId() {
     return randomId;
 }
 
+function toProfile(){
+    window.location.href = "../Profile/profile.html";
+}
+
 function addOnTable(item,index){
     let newRow = document.createElement("tr");
 
@@ -235,6 +283,8 @@ function addOnTable(item,index){
     var endingDate = new Date(item.endingDate);
     // console.log(currentDate);
     var cell2 = document.createElement("td");
+    var cell2Code = document.createElement("p");
+
     var image = document.createElement("img");
     var p = document.createElement("p");
     p.className = "status";
@@ -255,8 +305,15 @@ function addOnTable(item,index){
         localStorage.setItem("upcoming","false");
     }
 
-    cell2.textContent = item.tournamentId;
-    newRow.append(cell2);
+    cell2Code.classList.add("eventCode");
+    cell2Code.textContent = item.tournamentId;
+    
+    //cell2.textContent = item.tournamentId;
+    cell2.append(cell2Code);
+    if(localStorage.getItem("organizer") == "true" || localStorage.getItem("manager") == "true"){
+        newRow.append(cell2);
+    }
+    
 
     var cell3 = document.createElement("td");
     cell3.textContent = item.tournamentName;
@@ -293,9 +350,11 @@ function addOnTable(item,index){
             i1.className = "fa-solid fa-lock lock";
             var i2 = document.createElement("i");   
             i2.className = "fa-solid fa-lock lock";
+
             cell7.appendChild(i1);
             cell8.appendChild(i2);
         }
+    
         newRow.append(cell7);
         newRow.append(cell8);
     }

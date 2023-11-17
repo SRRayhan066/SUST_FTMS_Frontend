@@ -25,6 +25,14 @@ playerButton.addEventListener("click",function(){
     toPlayerRegistration();
 });
 
+toTheTournamentButton.addEventListener("click",function(){
+    localStorage.setItem("organizer","false");
+    localStorage.setItem("player","false");
+    localStorage.setItem("manager","false");
+    toTournament();
+});
+
+
 
 function toPlayerRegistration(){
     window.location.href = "../PlayerRegistration/playerRegistration.html";
@@ -35,7 +43,5 @@ function toLoginPage(){
 }
 
 function toTournament(){
-    localStorage.setItem("organizer","false");
-    localStorage.setItem("manager","false");
     window.location.href = "../Tournament/tournament.html";
 }

@@ -12,6 +12,8 @@ const studentRegistrationNo = document.getElementById("studentRegistrationNo");
 const studentPassword = document.getElementById("studentPassword");
 const studentConfirmPassword = document.getElementById("studentConfirmPassword");
 
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
 
 const department = {
@@ -110,4 +112,38 @@ function submission(){
     }else{
         playerRegistration(registrationNo,playerName,deptCode,playerEmail,playerPassword,playerImage);
     }
+}
+
+function toTournament(){
+    window.location.href = "../Tournament/tournament.html";
+}
+
+const loginStudent = (email,password) => {
+    fetch('http://localhost:5050/api/player/login', {
+        method: 'POST',
+        body: JSON.stringify({
+            playerEmail : email,
+            playerPassword : password
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("ERROR: ${response.status}");
+            }
+            return response.json();
+        })
+        .then(data => {
+            toTournament();
+            alert("Login Successful");
+        })
+        .catch(error => console.log(error));
+}
+
+function loginFunction(){
+    var userEmail = email.value;
+    var userPassword = password.value;
+    loginStudent(userEmail,userPassword);
 }

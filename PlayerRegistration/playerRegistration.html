@@ -20,16 +20,16 @@
                 <h2>Player Sign In</h2>
                 <form action="#">
                     <div class="input-field">
-                        <input id="email" type="text" onkeydown="moveInput(event,'email','password')" required>
+                        <input id="email" type="email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-field">
-                        <input id="password" type="password" onkeydown="moveInput(event,'password','email')" required>
+                        <input id="password" type="password"  required>
                         <label>Password</label>
                     </div>
                     <!-- <a class="forgot-pass">Forgot password?</a> -->
                     
-                    <button type="submit" onclick="adminLogin()">Log In</button>
+                    <button onclick="loginFunction()">Log In</button>
                     
                 </form>
                 <div class="bottom-link">

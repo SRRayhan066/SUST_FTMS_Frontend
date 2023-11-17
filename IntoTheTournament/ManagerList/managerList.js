@@ -18,12 +18,51 @@ const managerDepartment = document.getElementById("managerDepartment");
 
 const tableBody = document.getElementById("tableBody");
 
+const porichoy = document.getElementById("porichoy");
+const logOut = document.getElementById("logOut");
+
+const pManager = document.getElementById("pManager");
+
+var allEditOption = document.getElementsByClassName('editOption');
+var allDeleteOption = document.getElementsByClassName('deleteOption');
+
+const editOptions = document.getElementById("editOptions");
+const deleteOptions = document.getElementById("deleteOptions");
+
 const department = {
     deptCode: undefined,
     deptName: undefined
 }
 
 const departments = [department];
+
+const onPageLoading = () =>{
+    const organizer = localStorage.getItem("organizer");
+    const manager = localStorage.getItem("manager");
+    const player = localStorage.getItem("player");
+
+    pManager.style.width = "80px";
+    pManager.style.fontSize = "16px";
+
+    if(organizer == "true"){
+        
+    }else if(manager == "true"){
+
+    }else if(player == "true"){
+
+    }else{
+        porichoy.innerHTML = "General";
+        logOut.style.display = "none";
+        for (var i = 0; i < allEditOption.length; i++) {
+            allEditOption[i].style.display = 'none';
+            allDeleteOption[i].style.display = 'none';
+        }
+        editOptions.style.display = "none";
+        deleteOptions.style.display = "none";
+    }
+}
+
+onPageLoading();
 
 function toTeamList(){
     window.location.href = "../TeamList/teamList.html";

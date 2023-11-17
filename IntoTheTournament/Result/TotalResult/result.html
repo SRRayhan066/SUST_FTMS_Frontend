@@ -11,36 +11,77 @@
 <body>
     <body>
         <div class="background"></div>
-        <div class="allElements">
-            <div class="boxElements" id="teamList" onclick="toTeamList()">
-                <p><b>Team List</b></p>
-                <a href="#">
-                    <i class="fa-solid fa-people-group"></i>
-                </a>
+        <div class="nav">
+            <div class="user">
+                <div class="info">
+                    <a href="#">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </a>
+                    <p id="porichoy"><b>Organizer</b></p>
+                </div>
+                
             </div>
-            <div class="boxElements" id="fixture" onclick="toFixture()">
-                <p><b>Fixture</b></p>
-                <a href="#">
-                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
-                </a>
-            </div>
-            <div class="boxElements" id="refree" onclick="toRefree()">
-                <p><b>Refrees</b></p>
-                <a href="#">
-                    <i class="fa-solid fa-flag-checkered"></i>
-                </a>
-            </div>
-            <div class="boxElements" id="addTeam" onclick="openForm()">
-                <p><b>Score</b></p>
-                <a href="#">
-                    <i class="fa-solid fa-plus"></i>
-                </a>
-            </div>
-            <div class="boxElements" id="logOut">
-                <p><b>Logout</b></p>
-                <a href="#">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
+            <div class="allElements">
+                <div class="box">
+                    <input type="text" placeholder="Department Name" id="searchInput">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="tournament">
+                    <p id="pTournament"><b>Tournament</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-futbol"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="teamList" >
+                    <p id="pTeamList"><b>Team List</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-people-group"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="playerList">
+                    <p id="pPlayerList"><b>Player</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-shirt"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="scoreButton">
+                    <p id="pScore"><b>Score</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-scroll"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="fixture" onclick="toFixture()">
+                    <p id="pFixture"><b>Fixture</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="refree" onclick="toRefree()">
+                    <p><b>Refrees</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="addTeamManager" onclick="toManager()">
+                    <p><b>Manager</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-person-circle-plus"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="printOut" onclick="printPage()">
+                    <p><b>Print</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-print"></i>
+                    </a>
+                </div>
+                <div class="boxElements" id="logOut">
+                    <p><b>Logout</b></p>
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
             </div>
         </div>
     
@@ -106,7 +147,7 @@
                 <section class="table_header">
 
                     <i class="fa-solid fa-chevron-right" onclick="toNext()"></i>
-                    <h1 id="matchName"> SWE vs CSE </h1>          
+                    <h1 id="matchName"> CSE vs SWE </h1>          
                 </section>
                 <section class="table_body">
                     <table id="tableContainer">
@@ -119,8 +160,39 @@
                         <tbody>
                             <tr>
                                 <td> 1 </td>
-                                <td> 7 </td>
+                                <td> 3 </td>
                             </tr>  
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> Refree Code </th>
+                                <th> Refree Name </th>
+                                <th> Role </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1001 </td>
+                                <td> Arafat </td>
+                                <td> Main Refree </td>
+                            </tr>  
+                            <tr>
+                                <td> 1002 </td>
+                                <td> Al-Amin </td>
+                                <td> Line Man </td>
+                            </tr>  
+                            <tr>
+                                <td> 1003 </td>
+                                <td> Mehraj </td>
+                                <td> Line Man </td>
+                            </tr>  
+                            <tr>
+                                <td> 1004 </td>
+                                <td> Zakaria </td>
+                                <td> Fourth Refree </td>
+                            </tr> 
                         </tbody>
                     </table>
                 </section>

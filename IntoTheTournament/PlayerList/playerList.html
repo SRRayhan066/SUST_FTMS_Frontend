@@ -10,54 +10,77 @@
 </head>
 <body>
     <div class="background"></div>
-    <div class="allElements">
-        <div class="box">
-            <input type="text" placeholder="Player Name" id="searchInput">
-            <a href="#">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
+    <div class="nav">
+        <div class="user">
+            <div class="info">
+                <a href="#">
+                    <i class="fa-solid fa-user-tie"></i>
+                </a>
+                <p id="porichoy"><b>Organizer</b></p>
+            </div>
+            
         </div>
-        <div class="boxElements" id="teamList" onclick="toTeamList()">
-            <p><b>Team List</b></p>
-            <a href="#">
-                <i class="fa-solid fa-people-group"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="fixture" onclick="toFixture()">
-            <p><b>Fixture</b></p>
-            <a href="#">
-                <i class="fa-solid fa-timeline fa-rotate-270"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="addTeamManager">
-            <p><b>Manager</b></p>
-            <a href="#">
-                <i class="fa-solid fa-person-circle-plus"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="refree" onclick="toRefree()">
-            <p><b>Refrees</b></p>
-            <a href="#">
-                <i class="fa-solid fa-flag-checkered"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="addPlayer" onclick="openForm()">
-            <p><b>Add Player</b></p>
-            <a href="#">
-                <i class="fa-solid fa-plus"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="printOut" onclick="printPage()">
-            <p><b>Print</b></p>
-            <a href="#">
-                <i class="fa-solid fa-print"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="logOut">
-            <p><b>Logout</b></p>
-            <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </a>
+        <div class="allElements">
+            <div class="box">
+                <input type="text" placeholder="Department Name" id="searchInput">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="tournament">
+                <p id="pTournament"><b>Tournament</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-futbol"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="teamList" >
+                <p id="pTeamList"><b>Team List</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-people-group"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="playerList">
+                <p id="pPlayerList"><b>Player</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-shirt"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="fixture" onclick="toFixture()">
+                <p><b>Fixture</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="refree" onclick="toRefree()">
+                <p><b>Refrees</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="addTeamManager" onclick="toManager()">
+                <p><b>Manager</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-person-circle-plus"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="addPlayer">
+                <p><b>Add Team</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="printOut" onclick="printPage()">
+                <p><b>Print</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-print"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="logOut">
+                <p><b>Logout</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -110,24 +133,88 @@
                     <tbody>
                         <tr>
                             <td> 1 </td>
-                            <td> 2019831052 </td>
-                            <td> Avik Singha </td>
+                            <td> 2019831007 </td>
+                            <td> Bijon Saha </td>
                             <td> 2019-20 </td>
                             <td> 6th </td>
                             <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
                         </tr>
                         <tr>
                             <td> 2 </td>
-                            <td> 2019831065 </td>
-                            <td> Fahad Pathan </td>
+                            <td> 2019831013 </td>
+                            <td> Shawon Majid </td>
                             <td> 2019-20 </td>
                             <td> 6th </td>
                             <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
                         </tr>
                         <tr>
                             <td> 3 </td>
-                            <td> 2019831066 </td>
-                            <td> Md Shafikul Rahman </td>
+                            <td> 2019831019 </td>
+                            <td> Abu Bakar Siddique </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 4 </td>
+                            <td> 2019831024 </td>
+                            <td> Rifat Shahriar Sakil </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 5 </td>
+                            <td> 2019831025 </td>
+                            <td> Shihabuzzaman </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 6 </td>
+                            <td> 2019831026 </td>
+                            <td> Safayat Hossan Rafi </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 7 </td>
+                            <td> 2019831029 </td>
+                            <td> Ariful Islam Shanto </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 8 </td>
+                            <td> 2019831031 </td>
+                            <td> Ifaz Aiman </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 9 </td>
+                            <td> 2019831032 </td>
+                            <td> Shahriar Alam Alvi </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 10 </td>
+                            <td> 2019831034 </td>
+                            <td> Hamim Rahman </td>
+                            <td> 2019-20 </td>
+                            <td> 6th </td>
+                            <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 11 </td>
+                            <td> 2019831036 </td>
+                            <td> Md Ibarahim </td>
                             <td> 2019-20 </td>
                             <td> 6th </td>
                             <td class="editOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>

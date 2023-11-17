@@ -10,42 +10,83 @@
 </head>
 <body>
     <div class="background"></div>
-    <div class="allElements">
-        <div class="box">
-            <input type="text" placeholder="Refree Name">
-            <a href="#">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
+    <div class="nav">
+        <div class="user">
+            <div class="info">
+                <a href="#">
+                    <i class="fa-solid fa-user-tie"></i>
+                </a>
+                <p id="porichoy"><b>Organizer</b></p>
+            </div>
+            
         </div>
-        <div class="boxElements" id="teamList" onclick="toTeamList()">
-            <p><b>Team List</b></p>
-            <a href="#">
-                <i class="fa-solid fa-people-group"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="fixture" onclick="toFixture()">
-            <p><b>Fixture</b></p>
-            <a href="#">
-                <i class="fa-solid fa-timeline fa-rotate-270"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="refree">
-            <p><b>Refrees</b></p>
-            <a href="#">
-                <i class="fa-solid fa-flag-checkered"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="addTeam" onclick="openForm('New Refree')">
-            <p><b>Add Refree</b></p>
-            <a href="#">
-                <i class="fa-solid fa-plus"></i>
-            </a>
-        </div>
-        <div class="boxElements" id="logOut">
-            <p><b>Logout</b></p>
-            <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </a>
+        <div class="allElements">
+            <div class="box">
+                <input type="text" placeholder="Department Name" id="searchInput">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="tournament">
+                <p id="pTournament"><b>Tournament</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-futbol"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="teamList" >
+                <p id="pTeamList"><b>Team List</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-people-group"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="playerList">
+                <p id="pPlayerList"><b>Player</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-shirt"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="scoreButton">
+                <p id="pScore"><b>Score</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-scroll"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="fixture" onclick="toFixture()">
+                <p id="pFixture"><b>Fixture</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-timeline fa-rotate-270"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="refree" onclick="toRefree()">
+                <p id="pRefree"><b>Refrees</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="addRefree" onclick="openForm('New Refree')">
+                <p><b>Add</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="addTeamManager" onclick="toManager()">
+                <p><b>Manager</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-person-circle-plus"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="printOut" onclick="printPage()">
+                <p><b>Print</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-print"></i>
+                </a>
+            </div>
+            <div class="boxElements" id="logOut">
+                <p><b>Logout</b></p>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -81,7 +122,7 @@
     <div class="tournamentList relation">
         <main class="table">
             <section class="table_header">
-                <h1 id="tournamentHeading"></h1>
+                <h1>Refrees</h1>
             </section>
             <section class="table_body">
                 <table id="tableContainer">
@@ -92,29 +133,41 @@
                             <th> Name </th>
                             <th> Institute </th>
                             <th class="editOptions" id="editOptions"> Edit </th>
+                            <th class="deleteOptions" id="deleteOptions"> Delete </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> 1 </td>
                             <td> 1001 </td>
-                            <td> ABC </td>
-                            <td> XYZ </td>
-                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                            <td> Arafat </td>
+                            <td> BFF </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            <td class="deleteOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
                         </tr>
                         <tr>
                             <td> 2 </td>
                             <td> 1002 </td>
-                            <td> ABC2 </td>
-                            <td> XYZ </td>
-                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                            <td> Al-Amin </td>
+                            <td> BFF </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            <td class="deleteOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
                         </tr>
                         <tr>
                             <td> 3 </td>
                             <td> 1003 </td>
-                            <td> ABCD3 </td>
-                            <td> XYZ </td>
-                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                            <td> Mehraj </td>
+                            <td> BFF </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            <td class="deleteOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
+                        </tr>
+                        <tr>
+                            <td> 4 </td>
+                            <td> 1004 </td>
+                            <td> Zakaria </td>
+                            <td> BFF </td>
+                            <td class="editOption"> <i class="fa-regular fa-pen-to-square editAction"></i> </td>
+                            <td class="deleteOption"> <i class="fa-solid fa-trash-can deleteAction"></i> </td>
                         </tr>
                     </tbody>
                 </table>

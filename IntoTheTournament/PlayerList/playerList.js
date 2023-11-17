@@ -16,10 +16,18 @@ const tableContainer = document.getElementById("tableContainer");
 const search = document.getElementById("searchInput");
 const tableRows = document.getElementsByTagName("tr");
 
+const pPlayerList = document.getElementById("pPlayerList");
+
+const porichoy = document.getElementById("porichoy");
+
 const onPageLoading = () =>{
     const value = localStorage.getItem("admin");
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
+    const player = localStorage.getItem("player");
+
+    pPlayerList.style.width = "80px";
+    pPlayerList.style.fontSize = "16px";
 
     if(organizer == "true"){
         addPlayerButton.style.display = "none";
@@ -29,10 +37,13 @@ const onPageLoading = () =>{
         });
     }else if(manager == "true"){
 
+    }else if(player == "true"){
+
     }else{
         addPlayerButton.style.display = "none";
         editOptions.style.display = "none";
         logOutButton.style.display = "none";
+        porichoy.innerHTML = "General";
         editOption.forEach(function(element) {
             element.style.display = "none";
         });

@@ -8,8 +8,8 @@ tournamentHeading.innerHTML = tournamentName;
 const addTeamButton = document.getElementById("addTeam");
 const logOutButton = document.getElementById("logOut");
 
-const editOptions = document.getElementById("editOptions");
-const editOption = document.querySelectorAll(".editOption");
+// const editOptions = document.getElementById("editOptions");
+// const editOption = document.querySelectorAll(".editOption");
 
 const eventForm = document.getElementById("eventForm");
 const eventForm2 = document.getElementById("eventForm2");
@@ -33,6 +33,10 @@ const teamManager = document.getElementById("teamManager");
 const teamCaptain = document.getElementById("teamCaptain");
 
 const tableBody = document.getElementById("tableBody");
+
+const pTeamList = document.getElementById("pTeamList");
+
+const porichoy = document.getElementById("porichoy");
 
 var departmentCode;
 let teacherName;
@@ -91,13 +95,13 @@ const getATeacher = (email) => {
                 }
             }
 
-            submissionTime.value = currentDate();
-            submissionTime.disabled = true;
-            document.getElementById("submissionTimeLabel").style.display = "none";
+            // submissionTime.value = currentDate();
+            // submissionTime.disabled = true;
+            // document.getElementById("submissionTimeLabel").style.display = "none";
 
-            teamManager.value = teacherName;
-            teamManager.disabled = true;
-            document.getElementById("teamManagerLabel").style.display = "none";
+            // teamManager.value = teacherName;
+            // teamManager.disabled = true;
+            // document.getElementById("teamManagerLabel").style.display = "none";
             
         })
         .catch(error => console.log(error));
@@ -134,21 +138,34 @@ function moveInput(event, ownId, prevId, nextId){
 const onPageLoading = () => {
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
+    const player = localStorage.getItem("player");
+
+    pTeamList.style.width = "80px";
+    pTeamList.style.fontSize = "16px";
+
+
     if(organizer == "true"){
         addTeamButton.style.display = "none";
         editOptions.style.display = "none";
-        editOption.forEach(function(element) {
-            element.style.display = "none";
-        });
+        // editOption.forEach(function(element) {
+        //     element.style.display = "none";
+        // });
     }else if(manager == "true"){
+        porichoy.innerHTML = "Manager"
+
+    }else if(player == "true"){
+        porichoy.innerHTML = "Player"
 
     }else{
         addTeamButton.style.display = "none";
         logOutButton.style.display = "none";
-        editOptions.style.display = "none";
-        editOption.forEach(function(element) {
-            element.style.display = "none";
-        });
+        // editOptions.style.display = "none";
+        // editOption.forEach(function(element) {
+        //     element.style.display = "none";
+        // });
+
+        console.log("hello");
+        porichoy.innerHTML = "General";
     }
 }
 

@@ -40,6 +40,12 @@
     background-color: rgba(0,0,0,0.55);
 }
 
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .allElements{
     height: 10vh;
     display: flex;
@@ -117,6 +123,35 @@
 
 .boxElements a .fa-solid:hover{
     color: rgb(22, 132, 73);
+}
+
+.user{
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.info{
+    height: 40px;
+    width: 130px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-left: 50px;
+    color: rgb(22, 132, 73);
+}
+
+.info a .fa-solid{
+    outline: none;
+    color: rgb(66, 173, 116);
+    font-size: 18px;
+    margin-right: 5px;
 }
 
 

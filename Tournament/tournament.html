@@ -16,7 +16,7 @@
                 <a href="#">
                     <i class="fa-solid fa-user-tie"></i>
                 </a>
-                <p><b>Organizer</b></p>
+                <p id="porichoy"><b>Organizer</b></p>
             </div>
             
         </div>
@@ -46,7 +46,7 @@
                     <i class="fa-solid fa-print"></i>
                 </a>
             </div>
-            <div class="boxElements" id="profile">
+            <div class="boxElements" id="profile" onclick="toProfile()">
                 <p><b>Profile</b></p>
                 <a href="#">
                     <i class="fa-solid fa-user"></i>
@@ -100,13 +100,13 @@
                     <thead>
                         <tr>
                             <th> Serial No. </th>
-                            <th> Event Code </th>
+                            <th id="eventCodes"> Event Code </th>
                             <th> Event Name </th>
                             <th> Starting Date </th>
                             <th> Ending Date </th>
                             <th> Status </th>
                             <th id="editOptions" class="editOptions"> Edit </th>
-                            <th> Delete </th>
+                            <th id="deleteOptions" class="deleteOptions"> Delete </th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
