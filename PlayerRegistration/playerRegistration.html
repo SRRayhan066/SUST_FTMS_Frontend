@@ -46,31 +46,31 @@
                 <h2>Player Registration</h2>
                 <form action="#">
                     <div class="input-field">
-                        <input type="text" required>
+                        <input id="studentFullName" type="text" required>
                         <label>Full Name</label>
                     </div>
                     <div class="input-field">
-                        <input type="email" required>
+                        <input id="studentEmail" type="email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-field">
-                        <select>
+                        <select id="departmentList">
                             <option>Select Department</option>
                         </select>
                     </div>
                     <div class="input-field">
-                        <input type="number" required>
+                        <input id="studentRegistrationNo" type="number" required>
                         <label>Registration No.</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
+                        <input id="studentPassword" type="password" required>
                         <label>Password</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
+                        <input id="studentConfirmPassword" type="password" required>
                         <label>Confirm Password</label>
                     </div>
-                    <button type="submit">Sign Up</button>
+                    <button id="registrationButton" onclick="submission()">Sign Up</button>
                 </form>
                 <div class="bottom-link">
                     Already have an account?
