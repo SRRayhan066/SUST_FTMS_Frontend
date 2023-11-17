@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Registration</title>
+    <link rel="stylesheet" href="playerRegistration.css">
+    <script src="https://kit.fontawesome.com/f4d2c8c827.js" crossorigin="anonymous"></script>
+    <script src="playerRegistration.js" defer></script>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="form-popup" id="formBox">
+        <div class="form-box login loginHeight">
+            <div class="form-details">
+                <img src="../Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2>Player Sign In</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input id="email" type="text" onkeydown="moveInput(event,'email','password')" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="password" type="password" onkeydown="moveInput(event,'password','email')" required>
+                        <label>Password</label>
+                    </div>
+                    <!-- <a class="forgot-pass">Forgot password?</a> -->
+                    
+                    <button type="submit" onclick="adminLogin()">Log In</button>
+                    
+                </form>
+                <div class="bottom-link">
+                    Dont't have an account?
+                    <a href="#" id="signup-link">Sign Up</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-box signup registrationHeight">
+            <div class="form-details">
+                <img src="../Images/Football.png">
+            </div>
+            <div class="form-content">
+                <h2>Player Registration</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Full Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <select>
+                            <option>Select Department</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" required>
+                        <label>Registration No.</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Confirm Password</label>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="bottom-link">
+                    Already have an account?
+                    <a href="#" id="login-link">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

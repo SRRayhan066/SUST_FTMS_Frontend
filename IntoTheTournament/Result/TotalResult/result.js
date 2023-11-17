@@ -1,6 +1,6 @@
 const matchName = document.getElementById("matchName");
 const matchNameValue = localStorage.getItem("matchName");
-matchName.innerHTML = matchNameValue;
+// matchName.innerHTML = matchNameValue;
 
 const submissionButton = document.getElementById("submissionButton");
 

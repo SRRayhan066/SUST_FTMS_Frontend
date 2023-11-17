@@ -1,0 +1,334 @@
+
+*{
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans",sans-serif;
+}
+
+:root{
+    --colorWhite : white;
+    --colorGreen : rgb(26, 56, 26);
+    --borderRadiusColor : #717171;
+    --inputTextColor : #00bcd4;
+    --colorLightGreen : rgb(56, 193, 56);
+    --shadow : rgba(0,0,0,0.2);
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* background-color: #82c4cd; */
+    background-image: url("../Images/Football_Match_Picture.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.background::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.55);
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.allElements{
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 50px;
+}
+.box{
+    height: 40px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-right: 10px;
+}
+
+.box:hover input{
+    width:400px;
+}
+
+.box input{
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+}
+
+.box a .fa-solid{
+    outline: none;
+    color: rgb(66, 173, 116);
+    font-size: 18px;
+}
+
+.box a .fa-solid:hover{
+    color: rgb(22, 132, 73);
+}
+
+.box:focus-within input {
+    width: 400px; /* Set the width for the focused state */
+}
+
+.box:focus-within a {
+    outline: none; /* Set the width for the focused state */
+}
+
+.user{
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.info{
+    height: 40px;
+    width: 130px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-left: 50px;
+    color: rgb(22, 132, 73);
+}
+
+.info a .fa-solid{
+    outline: none;
+    color: rgb(66, 173, 116);
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.boxElements{
+    height: 40px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-right: 10px;
+}
+
+.boxElements:hover p{
+    width:100px;
+    font-size: 16px;
+}
+
+.boxElements p{
+    width: 0px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+    font-size: 0px;
+    color: rgb(22, 132, 73);
+    text-align: center;
+}
+
+.boxElements:focus-within p {
+    width: 100px; /* Set the width for the focused state */
+    font-size: 16px;
+}
+
+.boxElements a .fa-solid{
+    outline: none;
+    color: rgb(66, 173, 116);
+    font-size: 18px;
+}
+
+.boxElements:focus-within a {
+    outline: none;
+}
+
+.boxElements a .fa-solid:hover{
+    color: rgb(22, 132, 73);
+}
+
+
+
+.info p{
+    margin-bottom: 0rem;
+}
+
+.boxElements p{
+    margin-bottom: 0rem;
+}
+
+/* body {
+    background: #f5f5f5;
+    margin-top: 20px;
+} */
+
+.container{
+    margin-top: 2rem;
+}
+
+.ui-w-80 {
+    width : 80px !important;
+    height: auto;
+}
+
+.btn-default {
+    border-color: rgba(24, 28, 33, 0.1);
+    background  : rgba(0, 0, 0, 0);
+    color       : #4E5155;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn-outline-primaryy {
+    border-color: black;
+    color       : white;
+}
+
+.color{
+    background-color: white;
+}
+
+.btnn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    cursor: pointer;
+    background-color: white;
+}
+
+.btnn:hover{
+    color: white;
+    background-color: rgb(22, 132, 73);
+}
+
+.text-light {
+    color: #000000 !important;
+}
+
+.btn-facebook {
+    border-color: rgba(0, 0, 0, 0);
+    background  : #3B5998;
+    color       : #fff;
+}
+
+.btn-instagram {
+    border-color: rgba(0, 0, 0, 0);
+    background  : #000;
+    color       : #fff;
+}
+
+.cardd {
+    /*background-clip: padding-box;*/
+    /* box-shadow     : 0 1px 4px rgba(24, 28, 33, 0.012); */
+    background-color: #fff9;
+    border-radius: 1rem;
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.col-md-3 {
+    background-color: white;
+}
+
+.shortInfo{
+    font-size: 15px;
+}
+
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: white !important;
+}
+
+.account-settings-multiselect~.select2-container {
+    width: 100% !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.material-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.dark-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark-style .account-settings-links .list-group-item.active {
+    color: #360c0c !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: transparent !important;
+}
+
