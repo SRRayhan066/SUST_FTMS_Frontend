@@ -8,6 +8,10 @@ const insteadOfDiv = document.getElementById("insteadOfDiv");
 const porichoy = document.getElementById("porichoy");
 const logOut = document.getElementById("logOut");
 
+const pScore = document.getElementById("pScore");
+const editOptions = document.getElementsByClassName("editOptions");
+const editAction = document.getElementsByClassName('fa-regular fa-pen-to-square editAction');
+
 const onPageLoading = () =>{
     const organizer = localStorage.getItem("organizer");
     const manager = localStorage.getItem("manager");
@@ -25,6 +29,14 @@ const onPageLoading = () =>{
     }else{
         porichoy.innerHTML = "General";
         logOut.style.display = "none";
+        for (var i = 0; i < editAction.length; i++) {
+            editAction[i].style.display = "none";
+            
+        }
+        for (var i = 0; i < editOptions.length; i++) {
+            editOptions[i].style.display = "none";
+        }
+        
     }
 }
 
